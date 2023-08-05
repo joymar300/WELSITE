@@ -1,0 +1,152 @@
+/* navbar.module.css */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #0b0217e3;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.nav_logo {
+  padding: 10px 0;
+}
+
+.menu_items {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 860px) {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    background-color: #fff;
+    height: 100%;
+    padding: 50px 30px 30px;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  @media (min-width: 861px) {
+    display: flex;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+
+.nav_link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.nav_link.active::after {
+  width: 100%; /* Estilo para el underline rojo en la opción activa */
+  background-color: red;
+}
+
+.nav_link:hover::after {
+  width: 100%;
+}
+
+li {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button {
+  padding: 10px 27px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #2a83e8;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 500ms ease-in-out;
+}
+
+.button:hover {
+  background-color: #1a4f8b;
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.menu_toggle {
+  display: none;
+}
+
+/* Reponsive */
+@media (max-width: 860px) {
+  .menu_toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .nav {
+    padding: 0 20px;
+    background-color: #fff;
+  }
+  .nav_link {
+    color: black;
+  }
+  a {
+    color: black;
+  }
+
+  .showMenu .menu_items {
+    right: 0;
+  }
+
+  .showMenu .menu_toggle {
+    display: block;
+  }
+}
+
+.barra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Nuevos estilos para separar del borde y centrar */
+.menu_items li:first-child {
+  margin-left: 0;
+}
+
+.menu_items li:last-child {
+  margin-right: 0;
+}

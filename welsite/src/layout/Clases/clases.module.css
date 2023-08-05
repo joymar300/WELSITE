@@ -1,0 +1,134 @@
+/* Clases.module.css */
+
+.cursos {
+    padding: 100px 200px;
+  }
+  
+  .cursos .title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .cursos .section-title {
+    position: relative;
+    color: #fff;
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 60px;
+  }
+  
+  .cursos .section-title:before {
+    content: '';
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    width: 140px;
+    height: 4px;
+    background: #fff;
+    transform: translateX(-50%);
+  }
+  
+  .cursos .section-title:after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translateX(-50%);
+  }
+  
+  .cursos .content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: #fff;
+  }
+  
+  .cursos .content .column {
+    position: relative;
+    width: 45%;
+  }
+  
+  .cursos .content .col-left .img-card {
+    position: relative;
+    width: 100%;
+    min-height: 370px;
+  }
+  
+  .cursos .content .col-left .img-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  
+  .cursos .content .col-right .content-title {
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  
+  .cursos .content .col-right .paragraph-text {
+    font-size: 1em;
+  }
+  
+  .cursos .content .col-right .btn {
+    color: #fff;
+    background: #3a6cf4;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    margin-top: 30px;
+    transition: 0.5s ease;
+  }
+  
+  .cursos .content .col-right .btn:hover {
+    background: #235bf6;
+  }
+  
+  .separator-line {
+    width: 100%;
+    height: 2px;
+    background-color: #c9c9c9;
+    margin: 30px 0;
+  }
+  
+  /* Estilos responsivos */
+  @media screen and (max-width: 768px) {
+    .cursos {
+      padding: 80px 20px; /* Reducir el padding en dispositivos pequeños */
+    }
+  
+    .cursos .content {
+      flex-direction: column; /* Cambiar la dirección de los elementos a columna en dispositivos pequeños */
+      align-items: center; /* Centrar los elementos verticalmente en dispositivos pequeños */
+    }
+  
+    .cursos .content .column {
+      width: 100%; /* Cambiar el ancho de las columnas a 100% para que ocupen toda la pantalla en dispositivos pequeños */
+      max-width: 400px; /* Agregar un ancho máximo para evitar que los elementos se extiendan demasiado */
+    }
+  
+    .cursos .content .col-right,
+    .cursos .content .col-left {
+      margin-bottom: 20px; /* Agregar un margen inferior entre las columnas en dispositivos pequeños */
+    }
+  }
+  

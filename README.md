@@ -1,2 +1,0 @@
-# WELSITE
-pagina de sociales
