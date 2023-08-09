@@ -124,7 +124,7 @@ function verificarUser (user){
             {
               user ? 
               
-              <li><p   className={`${styles.nav_link}`}   > {username}</p> </li>:""
+              <li><Link to="#"   className={`${styles.nav_link}`}   > {username}</Link> </li>:""
             }   
             <li>
               { user ? <button onClick={logOut}  className={`${styles.button}`}>cerrar sesión</button> : <Link to="/signin" className={`${styles.button}`} id="form-open">
