@@ -17,7 +17,6 @@ const ErrorPage = () => {
         </p>
         <div className={styles.btns}>
           <Link to="/">return home</Link> {/* Usar Link en lugar de <a> */}
-          <a href="https://www.codingnepalweb.com/">report problem</a>
         </div>
       </div>
     </div>

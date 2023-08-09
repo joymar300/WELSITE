@@ -14,12 +14,13 @@
   
   .error-page-container p {
     font-size: 18px;
-    color: #FFF;
+    color: #333;
   }
   
   .error-page-container .content {
-    max-width: 600px;
+    max-width:600px;
     text-align: center;
+    width:100%;
   }
   
   .content h2.header {
@@ -64,7 +65,7 @@
     font-size: 1.5em;
     margin-bottom: 20px;
     text-transform: uppercase;
-    color: #fff;
+    color: #141414;
     font-size: 2em;
     max-width: 600px;
     position: relative;
@@ -83,7 +84,7 @@
   
   .content p {
     font-size: 1.2em;
-    color: #fff;
+    color: #333;
   }
   
   .content .btns {
@@ -96,17 +97,17 @@
     margin: 0 10px;
     text-decoration: none;
     border:none;
-    color: #333;
+    color: white;
     font-weight: 500;
     padding: 10px 25px;
-    border-radius: 25px;
+    border-radius: 5px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    background-color: white;
+    transition: all 0.8s ease;
+    background-color: #0099FF;
   }
   
   .content .btns a:hover {
-    background: #69a6ce;
+    background: #1a4f8b;
     color: #fff;
   }
   
