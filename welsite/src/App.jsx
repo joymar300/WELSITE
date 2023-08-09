@@ -9,6 +9,7 @@ import Clases from './layout/Clases/Clases';
 import Footer from './components/Footer/Footer';
 import Creadores from './layout/Creadores/Creadores';
 import Contenido3 from './layout/Contenido3/Contenido3';
+import Register from './layout/Register/Register';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="*" element={<Error404 />} />
             <Route path='/creadores' element={<Creadores/>} />
             <Route path="/contenido3" element={<Contenido3/>} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
 
