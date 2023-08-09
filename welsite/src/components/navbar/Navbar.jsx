@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom'; // Importa el componente Link
-import Logo from '../../assets/img/LOGOCOLSAM.png';
+import Logo from '../../assets/img/zorro.png';
 import styles from './navbar.module.css';
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <>
       <header className={`${styles.header} ${showMenu ? styles.showMenu : ''}`}>
-        <nav className={`${styles.nav} container`}>
+        <nav className={`${styles.nav}`}>
           <div className={styles.barra}>
             <img src={Logo} height="80px" alt="" srcSet="" />
             <h2 className={styles.nav_logo}>
