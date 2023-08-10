@@ -17,7 +17,7 @@ const SignIn = () => {
   const iniciar = async ()=>{
     try{
       const loadingAlert = MySwal.mixin({
-        title: 'Creando contenido',
+        title: 'Iniciando..',
         icon: 'info',
         showConfirmButton: false,
         allowOutsideClick: false,

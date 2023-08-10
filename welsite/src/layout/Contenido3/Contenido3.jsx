@@ -162,6 +162,9 @@ const cardsData = [
         showCancelButton: true,
         confirmButtonText: 'Sí, eliminar',
         cancelButtonText: 'Cancelar',
+        customClass: {
+          confirmButton: styles.confirmButton, // Asigna la clase de estilo definida en contenido3.module.css
+        },
       });
       if (result.isConfirmed) {
         Swal.fire({
@@ -322,7 +325,6 @@ const cardsData = [
 
             <div key={index} className={styles.card}>
               
-              {user ? <button onClick={()=>borrarContenido(i.id, i.imgUrl)} className={styles.buttoncardDelete}>  Eliminar</button> :""}
                <img src={i.imgUrl} alt={i.title} />
               <h2>{i.title}</h2>
               <button onClick={() => toggleCardModal(index)} className={styles.buttoncard}>
@@ -341,6 +343,7 @@ const cardsData = [
                   </div>
                 </div>
               )}
+               {user ? <div> <button onClick={()=>borrarContenido(i.id, i.imgUrl)} className={styles.buttoncardDelete}>  Eliminar</button></div> :""}
             </div>
 
           
