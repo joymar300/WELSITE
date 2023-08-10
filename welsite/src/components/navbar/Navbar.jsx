@@ -53,12 +53,8 @@ function verificarUser (user){
     
     //  console.log("mapa ", mapa)
      console.log(data);
-
-    
-      
     }
 
-    
   //  const [value, valueLoading, valueError] = useDocumentData(q);
 
    
@@ -85,7 +81,7 @@ function verificarUser (user){
           <div className={styles.barra}>
             <img src={Logo} height="80px" alt="" srcSet="" />
             <h2 className={styles.nav_logo}>
-              <Link to="/">Welsite</Link> {/* Cambia el 'a' por Link */}
+              <Link to="/">Weltsite</Link> {/* Cambia el 'a' por Link */}
             </h2>
             <span className={styles.menu_toggle} onClick={handleMenuToggle}>
               {showMenu ? <AiOutlineClose /> : <FiMenu />}

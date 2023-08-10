@@ -20,7 +20,7 @@ const HomeView = () => {
         <Link className={styles.btn} to="/contenido3"> {/* Usa Link en lugar de <a> */}
               Contenido 3
             </Link>
-            <Link className={styles.btn} to="/contenido3"> {/* Usa Link en lugar de <a> */}
+            <Link className={styles.btn} to="/contenido4"> {/* Usa Link en lugar de <a> */}
               Contenido 4
             </Link>
 

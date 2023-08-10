@@ -6,9 +6,11 @@ import HomeView from './layout/Home/Home';
 import SignIn from './layout/SignIn/SignIn';
 import Error404 from './components/Error/Error';
 import Clases from './layout/Clases/Clases';
+import Juegos from './layout/Juegos/Juegos';
 import Footer from './components/Footer/Footer';
 import Creadores from './layout/Creadores/Creadores';
 import Contenido3 from './layout/Contenido3/Contenido3';
+import Contenido4 from './layout/Contenido4/Contenido4';
 import Register from './layout/Register/Register';
 
 function App() {
@@ -27,11 +29,12 @@ function App() {
             <Route path="*" element={<Error404 />} />
             <Route path='/creadores' element={<Creadores/>} />
             <Route path="/contenido3" element={<Contenido3/>} />
+            <Route path='/contenido4' element={<Contenido4/>}/>
             <Route path="/register" element={<Register />} />
+            <Route path='/juegos' element={<Juegos/>}/>
           </Routes>
         </div>
-
-        {/* <Footer className={styles.footer} /> */}
+        <Footer className={styles.footer} /> 
       </div>
     </BrowserRouter>
   );

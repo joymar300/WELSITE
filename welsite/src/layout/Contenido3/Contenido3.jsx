@@ -45,12 +45,6 @@ const cardsData = [
       'Se encuentra en el hemisferio norte. Es el segundo continente más pequeño con una superficie de 10.530.751 kilómetros cuadrados. Su población es de 740 millones de habitantes, con una densidad de población de 70 habitantes por kilómetro cuadrado. \n\n'+
       'Está compuesto por 47 países y otros Estados como Mónaco o el Vaticano, que son territorios con estatus especiales. En su relieve se destaca el monte Elbrús, con una altura de 5.633 metros sobre el nivel del mar, en la región del Cáucaso. Como resultado de la gran variedad de relieves y del tipo de clima que predomina, el continente europeo presenta gran cantidad de ríos de distinto caudal y extensión. Los más largos de Europa son el Volga, el Danubio y el Ural.\n\n'+
       'Es importante tener en cuenta que la delimitación de los continentes es un concepto geográfico y puede haber diferentes interpretaciones y divisiones en función de los criterios utilizados. Por ejemplo, algunas clasificaciones consideran a América como un solo continente, mientras que otras lo dividen en América del Norte y América del Sur',
-  },
-  {
-    imageSrc: 'https://via.placeholder.com/150',
-    title: 'Título 2',
-    text:
-      'Contenido completo para la tarjeta 2.',
   }
   // Agrega más objetos de datos para más tarjetas...
 ];
@@ -85,8 +79,10 @@ const Contenido3 = () => {
     });
     setShowFormModal(false);
   };
+  
 
   return (
+    <div className={styles.container}>
     <div className={styles.cardContainer}>
       {cardsData.map((card, index) => (
         <div key={index} className={styles.card}>
@@ -163,6 +159,7 @@ const Contenido3 = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };
