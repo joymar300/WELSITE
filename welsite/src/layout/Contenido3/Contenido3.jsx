@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Contenido3.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
+import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { auth, db, storage } from '../../config/firebase';
+import { QuerySnapshot, addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const cardsData = [
     {
@@ -34,9 +40,9 @@ const cardsData = [
     imageSrc: 'https://img.freepik.com/vector-premium/mapa-asia-diferentes-animales-banner-divertidos-dibujos-animados-ninos-continente_93083-1011.jpg?w=2000',
     title: 'Asia',
     text:
-      'Es el continente con mayor superficie: 44.541.138 km2. También es el continente con mayor población, con 4500 millones de habitantes. Limita con el océano Glaciar Ártico al norte, el océano Índico al sur, el océano Pacífico al oeste y los montes Urales al este. \n\n'+
-      'Está compuesto por 48 países, y aunque en su relieve predominan mesetas y llanuras, también pueden encontrarse elevados sistemas montañosos al centro y oeste, como la cordillera del Himalaya donde se ubica el Monte Everest, el más elevado del planeta, con 8848 metros de altura. Su gran extensión y lo húmedo de la mayoría de sus climas también determina la presencia de grandes cuencas hidrográficas y largos ríos. Los más extensos son el río Yangtsé, el Amarillo y el Mekong.'
-      ,
+    'Es el continente con mayor superficie: 44.541.138 km2. También es el continente con mayor población, con 4500 millones de habitantes. Limita con el océano Glaciar Ártico al norte, el océano Índico al sur, el océano Pacífico al oeste y los montes Urales al este. \n\n'+
+    'Está compuesto por 48 países, y aunque en su relieve predominan mesetas y llanuras, también pueden encontrarse elevados sistemas montañosos al centro y oeste, como la cordillera del Himalaya donde se ubica el Monte Everest, el más elevado del planeta, con 8848 metros de altura. Su gran extensión y lo húmedo de la mayoría de sus climas también determina la presencia de grandes cuencas hidrográficas y largos ríos. Los más extensos son el río Yangtsé, el Amarillo y el Mekong.'
+    ,
   },
   {
     imageSrc: 'https://img.freepik.com/vector-gratis/ilustracion-mapa-ninos-dibujados-mano_23-2149562338.jpg?w=2000',
@@ -45,11 +51,158 @@ const cardsData = [
       'Se encuentra en el hemisferio norte. Es el segundo continente más pequeño con una superficie de 10.530.751 kilómetros cuadrados. Su población es de 740 millones de habitantes, con una densidad de población de 70 habitantes por kilómetro cuadrado. \n\n'+
       'Está compuesto por 47 países y otros Estados como Mónaco o el Vaticano, que son territorios con estatus especiales. En su relieve se destaca el monte Elbrús, con una altura de 5.633 metros sobre el nivel del mar, en la región del Cáucaso. Como resultado de la gran variedad de relieves y del tipo de clima que predomina, el continente europeo presenta gran cantidad de ríos de distinto caudal y extensión. Los más largos de Europa son el Volga, el Danubio y el Ural.\n\n'+
       'Es importante tener en cuenta que la delimitación de los continentes es un concepto geográfico y puede haber diferentes interpretaciones y divisiones en función de los criterios utilizados. Por ejemplo, algunas clasificaciones consideran a América como un solo continente, mientras que otras lo dividen en América del Norte y América del Sur',
-  }
-  // Agrega más objetos de datos para más tarjetas...
-];
+    },
+    {
+      imageSrc: 'https://via.placeholder.com/150',
+      title: 'Título 2',
+      text:
+      'Contenido completo para la tarjeta 2.',
+    }
+    // Agrega más objetos de datos para más tarjetas...
+  ];
+  
+  const Contenido3 = () => {
+    // estados
+    const [data, setData] = useState([]);
+    const [dataUrl, setDataUrl] = useState('');
+    const MySwal = withReactContent(Swal)
+    const [user, setUser]=useState("");
+    
+    useEffect(()=>{
+      traerContenido()
+      onAuthStateChanged(auth, verificarUser)
+    },[])
 
-const Contenido3 = () => {
+    function verificarUser (user){
+      if (user) {
+      setUser(user.email)
+      console.log(user.email)
+      
+      
+    }else{
+      setUser("")
+      console.log("no hay nadie registrado")
+    }
+    
+  }
+
+  const crearcontenido = async ()=>{
+    try{
+      const loadingAlert = MySwal.mixin({
+        title: 'Creando contenido',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Muestra el indicador de progreso
+        },
+      });
+      loadingAlert.fire();
+      const docRef = await addDoc(collection(db, "contenido3"), {
+        imgUrl:'',
+        title: newCardData.title,
+        text: newCardData.text,
+      });
+
+      const folder =  ref(storage,`contenido3/${docRef.id}`)
+      await uploadBytes(folder,newCardData.imageSrc);
+      const link = await getDownloadURL(folder)
+      await updateDoc(doc(db, "contenido3", docRef.id), {
+        imgUrl: link
+      })
+      await traerContenido()
+      toggleFormModal()
+      setNewCardData({
+        imageSrc: '',
+        title: '',
+        text: '',
+      });
+      MySwal.close();
+      Swal.fire({
+        title: 'Creación exitosa',
+        text: 'El contenido ha sido creado con éxito.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+    } catch (err){
+      console.log(err)
+      Swal.fire({
+        title: 'Error al crear contenido',
+        text: 'Ha ocurrido un error al crear el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+    
+    
+  };
+  
+  async function traerContenido() {
+    
+  const info = []
+    const dataRef = collection(db,"contenido3");
+    const q = query(dataRef);
+    const queySnapshot = await getDocs(q);
+    queySnapshot.forEach((doc)=>{
+       info.push({ id: doc.id, ...doc.data() });
+     });
+    
+    console.log(data)
+    setData(info);
+  }
+
+  const borrarContenido = async(docId, imgId)=>{
+    try{
+      const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará el contenido permanentemente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+      });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Eliminando contenido',
+          text: 'Procesando la eliminación...',
+          icon: 'info',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+        await deleteDoc(doc(db,"contenido3", docId ),)
+        const borrarimg = ref(storage, imgId)
+        deleteObject(borrarimg).then(()=>{
+          console.log("imagen borrada");
+          
+        }).catch((err)=>{
+          console.log("error al borrar imagen" + err);
+          
+        })
+    
+        await traerContenido()
+        Swal.fire({
+          title: 'Eliminación exitosa',
+          text: 'El contenido ha sido eliminado con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+
+    } catch(err){
+      console.error('Error al eliminar contenido:', err);
+      Swal.fire({
+        title: 'Error al eliminar contenido',
+        text: 'Ha ocurrido un error al eliminar el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+  }
+
+  
   const [showCardModal, setShowCardModal] = useState(false);
   const [showFormModal, setShowFormModal] = useState(false);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
@@ -58,7 +211,7 @@ const Contenido3 = () => {
     title: '',
     text: '',
   });
-
+  
   const toggleCardModal = (index) => {
     setActiveCardIndex(index);
     setShowCardModal(!showCardModal);
@@ -84,7 +237,7 @@ const Contenido3 = () => {
   return (
     <div className={styles.container}>
     <div className={styles.cardContainer}>
-      {cardsData.map((card, index) => (
+      {/* {cardsData.map((card, index) => (
         <div key={index} className={styles.card}>
           <img src={card.imageSrc} alt={card.title} />
           <h2>{card.title}</h2>
@@ -105,11 +258,13 @@ const Contenido3 = () => {
             </div>
           )}
         </div>
-      ))}
-  
-      <a href="#" className={styles.float} onClick={toggleFormModal}>
-        <AiOutlinePlus className={styles.myfloat} />
-      </a>
+      ))} */}
+      { user ?
+        <a href="#" className={styles.float} onClick={toggleFormModal}>
+          <AiOutlinePlus className={styles.myfloat} />
+        </a>: ""
+
+      }
 
       {showFormModal && (
         <div className={styles.formModalOverlay}>
@@ -126,7 +281,7 @@ const Contenido3 = () => {
                   onChange={(e) =>
                     setNewCardData({
                       ...newCardData,
-                      imageSrc: URL.createObjectURL(e.target.files[0]),
+                      imageSrc: (e.target.files[0]),
                     })
                   }
                 />
@@ -139,7 +294,7 @@ const Contenido3 = () => {
                   onChange={(e) =>
                     setNewCardData({ ...newCardData, title: e.target.value })
                   }
-                />
+              />
 
                 <label htmlFor="text">Texto:</label>
                 <textarea
@@ -148,17 +303,52 @@ const Contenido3 = () => {
                   onChange={(e) =>
                     setNewCardData({ ...newCardData, text: e.target.value })
                   }
-                />
+                 />
 
                 <button type="button" onClick={toggleFormModal}>
                   Cancelar
                 </button>
-                <button type="submit">Guardar</button>
+                <button type="button" onClick={crearcontenido}>Guardar</button>
               </form>
             </div>
           </div>
         </div>
+
+        
       )}
+
+      {
+       data ? data.map((i, index)=>(
+
+            <div key={index} className={styles.card}>
+              
+              {user ? <button onClick={()=>borrarContenido(i.id, i.imgUrl)} className={styles.buttoncardDelete}>  Eliminar</button> :""}
+               <img src={i.imgUrl} alt={i.title} />
+              <h2>{i.title}</h2>
+              <button onClick={() => toggleCardModal(index)} className={styles.buttoncard}>
+                Mostrar más contenido
+              </button>
+              {showCardModal && activeCardIndex === index && (
+                <div className={styles.modalOverlay}>
+                  <div className={styles.modal}>
+                    <div className={styles.modalContent}>
+                      <h2>{i.title}</h2>
+                      <p>{i.text}</p>
+                      <button onClick={() => toggleCardModal(index)}>
+                        <GrClose />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+          
+        )
+          
+         
+        ):""
+      }
     </div>
     </div>
   );

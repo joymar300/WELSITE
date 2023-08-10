@@ -14,7 +14,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const Navbar = () => {
 
   
-  const [user, setUser]=  useState([]);
+  const [user, setUser]=  useState("");
   const [username, setUsername]= useState([]);
 
   useEffect(()=>{
@@ -25,10 +25,12 @@ const Navbar = () => {
   
 function verificarUser (user){
     if (user) {
+      setUser(user.email)
       console.log(user.email)
       traerUser(user)
       
     }else{
+      
       console.log("no hay nadie registrado")
     }
     
@@ -36,6 +38,7 @@ function verificarUser (user){
 
   
  async function traerUser (user) {
+  //mostrar el nombre del usuario logeado
     const dataRef = collection(db,"users");
     const q = query(dataRef, where("email", "==",user.email));
 
@@ -62,7 +65,9 @@ function verificarUser (user){
   
   const logOut = async()=>{
     try {
+      
       await signOut(auth);
+      setUser("");
     } catch (error) {
       console.log(error)
     }

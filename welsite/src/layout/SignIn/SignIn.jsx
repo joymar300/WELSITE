@@ -6,17 +6,37 @@ import Logo from '../../assets/img/LOGOCOLSAM.png';
 import { auth } from '../../config/firebase';
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
-
-  const SignIn = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] =useState("");
-    const [password, setPassword]= useState("");
-    const iniciar = async ()=>{
-      try{
-        await signInWithEmailAndPassword(auth,email,password);
-        navigate("/");
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'; 
+const SignIn = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] =useState("");
+  const [password, setPassword]= useState("");
+  
+  const MySwal = withReactContent(Swal);
+  const iniciar = async ()=>{
+    try{
+      const loadingAlert = MySwal.mixin({
+        title: 'Creando contenido',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Muestra el indicador de progreso
+        },
+      });
+      loadingAlert.fire();
+      await signInWithEmailAndPassword(auth,email,password);
+      MySwal.close();
+      navigate("/");
        
       } catch (err){
+        Swal.fire({
+          title: 'Error al iniciar sesión',
+          text: err,
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+        });
         console.log(err)
       }
   
