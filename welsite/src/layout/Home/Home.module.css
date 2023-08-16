@@ -16,15 +16,24 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.123);
+  background: rgb(135 10 137 / 58%);
 }
 .homepage .content {
   display: flex;
-  height: 85%;
+  height: 90%;
   z-index: 3;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
+}
+.homeLogo {
+
+  margin-top: 30px;
+  height: 600px;
+  width: 500px;
+  align-items: center;
+
+  animation: floatAnimationImg 2s infinite;
 }
 .homepage .content h1 {
   font-size: 60px;
@@ -71,10 +80,21 @@
   transform: scale(1.02);
   background-color: #1a4f8b;
 }
-.btn:nth-child(2):hover{
-  transform: scale(1.02);
-  background-color: #27a369;
+.sliderButton{
+  position: relative;
+  bottom: 6%;
+  font-size: 50px;
+  font-weight: bold;
+  border-radius: 6px;
+  
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 1s ease-in-out;
+  animation: floatAnimationBtn 2s infinite;
+
 }
+
 @media screen and (max-width: 860px) {
   .homepage{
     margin-top: 80px;
@@ -93,6 +113,9 @@
   .btn{
     font-size: 18px;
   }
+  .homeLogo{
+    width: 400px;
+  }
 }
 @media (max-width: 768px) {
   .homepage{
@@ -103,8 +126,13 @@
 }
   
   .contenedor {
-    height: 100vh;
+    height: 150vh;
     margin-top: 80px; /* Márgenes más pequeños para pantallas más pequeñas */
+  }
+  .homeLogo{
+    margin: 0;
+    height: 300px;
+    width: 250px;
   }
 }
 @keyframes floatAnimation {
@@ -121,3 +149,22 @@
     transform: translate(5px, -5px);
   }
 }
+@keyframes floatAnimationImg {
+  0%,100%{
+    transform: scale(1.05);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+
+}
+@keyframes floatAnimationBtn {
+  0%,100%{
+    transform: scale(1.0);
+  }
+  50%{
+    transform: scale(1.4);
+  }
+
+}
+

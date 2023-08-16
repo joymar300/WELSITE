@@ -15,6 +15,7 @@ import Register from './layout/Register/Register';
 import Contenido from './layout/Continentes/continentes';
 import Contenidogrado3 from './layout/contenidogrado3/contenidogrado3';
 
+import { SliderHome } from './components/SliderHome/SliderHome';
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
             <Route path='/contenido4' element={<Contenido4/>}/>
             <Route path="/register" element={<Register />} />
             <Route path='/clases/contenido3/continentes' element={<Contenido/>}/>
+            <Route path='/juegos' element={<Juegos/>}/>
+            <Route path='/SliderHome' element={<SliderHome/>}/>
           </Routes>
         </div>
         <Footer className={styles.footer} /> 

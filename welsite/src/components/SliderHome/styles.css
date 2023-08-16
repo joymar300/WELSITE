@@ -1,0 +1,32 @@
+
+  .slick-dots{ /*posición del dots */
+    
+      position: absolute;
+      bottom: 8px;
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+  
+  }
+  .slick-dots.slick-thumb li {
+    height: 10px;
+    width: 50px;
+    margin-top: auto;
+    border-radius: 999px;
+    transition: all 0.5s ease-in-out;
+    will-change: width;
+    background-color: rgb(167, 167, 167);
+  }
+  
+  .slick-dots.slick-thumb li.slick-active {
+    background: linear-gradient(147deg,#f6b323 0%, #f23b26 74%);
+    border-radius: 10px;
+    
+    transition: transform .6s;
+    transform-origin: left;
+  }
+
+  
