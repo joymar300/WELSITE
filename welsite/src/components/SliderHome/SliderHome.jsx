@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import Logo from '../../assets/img/zorro.png';
+import Logo from '../../assets/img/gato.svg';
 import styles from "./SliderHome.module.css"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -13,13 +13,13 @@ export const  SliderHome = () =>{
   const items = [
     {
       title: 'Contenido 3',
-      description: 'Aprende y juega con nuestro intersenate contenido',
+      description: '¡Explora las ciencias sociales básicas con énfasis en geografía e historia. Nuestras clases te llevarán en un emocionante viaje de aprendizaje. Descubre culturas, eventos históricos y la diversidad de nuestro planeta. Además, disfruta de recursos complementarios y sumérgete en un mundo de conocimiento en Weltsite. ¡Aprende de manera divertida y enriquecedora en tercer grado!',
       imageUrl: dino,
       urlNav: '/contenido3',
     },
     {
       title: 'Contenido 4',
-      description: 'Aprende y juega con nuestro intersenate contenido',
+      description: '¡Explora temas avanzados en geografía e historia y amplía tu comprensión del mundo. A través de clases detalladas, adéntrate en conceptos fascinantes y enriquecedores. Prepárate para un emocionante viaje de aprendizaje en 4to grado en Weltsite. ¡Estoy aquí para ayudarte en cada paso del camino!',
       imageUrl: Logo,
       urlNav: '/contenido4'
     },]

@@ -5,7 +5,7 @@ import { AiOutlineUserAdd } from 'react-icons/ai';
 import { FaGamepad } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FiMenu } from 'react-icons/fi';
-import Logo from '../../assets/img/zorro.png';
+import Logo from '../../assets/img/oli.png';
 import styles from './navbar.module.css';
 import { auth, db, userExist } from '../../config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';

@@ -98,6 +98,8 @@
 @media screen and (max-width: 860px) {
   .homepage{
     margin-top: 80px;
+    height: 50%;
+    padding-top: 0;
   }
     .homepage .content h1 {
     font-size: 40px;
