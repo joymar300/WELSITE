@@ -75,6 +75,12 @@ const Contenido4 = () => {
   
 
   return (
+    <div>
+    <div className={styles.inicio}>
+        <div className={styles.titulo}>
+        <h2>¿Quieres jugar y aprender?</h2>
+        </div>
+      </div>
     <div className={styles.container}>
     <div className={styles.cardContainer}>
       {cardsData.map((card, index) => (
@@ -152,6 +158,7 @@ const Contenido4 = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
     </div>
   );

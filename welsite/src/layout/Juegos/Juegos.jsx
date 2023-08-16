@@ -3,6 +3,7 @@ import styles from './Juegos.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
 
+
 const Juegos = () => {
     const [showFormModal, setShowFormModal] = useState(false);
     const [newCardData, setNewCardData] = useState({
@@ -68,7 +69,16 @@ const Juegos = () => {
     };
   
     return (
+      <>
+     
+      <div className={styles.inicio}>
+        <div className={styles.titulo}>
+
+        <h2>¿Quieres jugar y aprender?</h2>
+        </div>
+      </div>
       <div className={styles.container}>
+        
         <div className={styles.cardContainer}>
           {cardsData.map((card, index) => (
             <div className={styles.body} key={index}>
@@ -131,6 +141,7 @@ const Juegos = () => {
       )}
     </div>
     </div>
+    </>
   );
 };
 

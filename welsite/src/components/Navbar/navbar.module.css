@@ -62,7 +62,7 @@ a {
   position: relative;
 }
 
-.nav_link::after {
+/* .nav_link::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -74,13 +74,13 @@ a {
 }
 
 .nav_link.active::after {
-  width: 100%; /* Estilo para el underline rojo en la opción activa */
+  width: 100%; 
   background-color: red;
 }
 
 .nav_link:hover::after {
   width: 100%;
-}
+} */
 
 li {
   color: #fff;
@@ -157,4 +157,80 @@ li {
 
 .menu_items li:last-child {
   margin-right: 0;
+}
+.home svg {
+  color: #0099ff;
+}
+
+.map svg {
+  color: #00cc66;
+}
+
+.classes svg {
+  color: #ff9900;
+}
+
+.games svg {
+  color: #cc33ff;
+}
+
+.creators svg {
+  color: #ff3333;
+}
+.registre svg{
+  color: rgb(204, 108, 233);
+}
+/* Estilos para el hover circular */
+.nav_link,svg{
+  text-align: center;
+  transition: all 500ms ease-in-out;
+}
+.home:hover {
+  background-color: #0099ff;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+.map:hover {
+  background-color: #00cc66;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+.classes:hover {
+  background-color: #ff9900;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+}
+.games:hover{
+  background-color:#cc33ff ;
+  border-radius: 10px;
+  padding: 10px;
+  color:white;
+}
+.registre:hover{
+  background-color: rgb(204, 108, 233);
+  border-radius: 10px;
+  padding: 10px;
+  color:white;
+}
+.creators:hover{
+  background-color:#ff3333;
+  border-radius: 10px;
+  padding: 10px;
+  color:white;
+}
+
+.nav_link:hover svg {
+  color: #fff;
+}
+.active {
+  
+  border-radius: 10px;
+  padding: 10px;
+  color :#fff;
+}
+.active svg{
+  color: #fff;
 }

@@ -4,8 +4,8 @@
   height: 100vh;
   width: 100%;
   position: relative;
-  background: url('../../assets/img/fondo4.png');
-  background-position: center 65%;
+  background: url('../../assets/img/6010415.png');
+  background-position: center ;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -16,7 +16,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.644);
+  background: rgba(0, 0, 0, 0.123);
 }
 .homepage .content {
   display: flex;
@@ -45,7 +45,7 @@
   justify-content: center;
   gap: 10px;
 }
-.btn{
+.btn:nth-child(1){
   padding: 10px 27px;
   font-size: 24px;
   font-weight: bold;
@@ -56,11 +56,25 @@
   color: white;
   transition: all 1s ease-in-out;
 }
-.btn:hover{
+.btn:nth-child(2){
+  padding: 10px 27px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #3bca87;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 1s ease-in-out;
+}
+.btn:nth-child(1):hover{
   transform: scale(1.02);
   background-color: #1a4f8b;
 }
-
+.btn:nth-child(2):hover{
+  transform: scale(1.02);
+  background-color: #27a369;
+}
 @media screen and (max-width: 860px) {
   .homepage{
     margin-top: 80px;
@@ -81,6 +95,13 @@
   }
 }
 @media (max-width: 768px) {
+  .homepage{
+    background: url('../../assets/img/fondoresponsive.png');
+  background-position: center ;
+  background-size: cover;
+  background-attachment: fixed;
+}
+  
   .contenedor {
     height: 100vh;
     margin-top: 80px; /* Márgenes más pequeños para pantallas más pequeñas */

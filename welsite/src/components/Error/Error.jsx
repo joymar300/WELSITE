@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importar el componente Link
 import styles from './Error404.module.css';
+// import dino from '../../assets/img/dinosaurio.webp'
+import gato from '../../assets/img/dibujokid.png'
 
 const ErrorPage = () => {
   return (
     <div className={styles['error-page-container']}>
       <div className={styles.content}>
-        <h2 className={styles.header} data-text="404">
-          404
-        </h2>
+        <img src={gato} width={150}/>
         <h4 data-text="Opps! Page not found" className={styles.errorText}>
           Opps! Page not found
         </h4>

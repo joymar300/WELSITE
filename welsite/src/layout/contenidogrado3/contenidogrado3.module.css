@@ -1,0 +1,101 @@
+.inicio{
+    background-image: url('https://img.freepik.com/vector-gratis/parque-infantil-parque-arco-iris-cielo-escena-panoramica-estilo-dibujos-animados-dia_1308-52695.jpg?w=1380&t=st=1691723684~exp=1691724284~hmac=856d25e30c1c7d679fb53b0cd7dfca08b9f3fa81a1e07c179761efbfcf6d5b23'); 
+    background-position: center;
+  background-size: cover;
+    background-repeat: no-repeat;
+      margin-top: 80px;
+      width: 100%;
+      height: 250px;
+    }
+    .inicio .titulo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.589);
+      text-align: center;
+    }
+    .inicio .titulo h2{
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+    }
+  .container {
+    margin-top: 50px; /* Ajusta este valor según tu preferencia */
+  }
+  h2 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #333;
+  }
+  .tarjeta {
+    max-width:52vw;
+    margin: 43px auto;
+    display: block;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    overflow: hidden;
+    box-shadow:  17px 17px 76px #6d7d78,
+             -17px -17px 76px #ffffff;
+  }
+  .contenido {
+    display: flex;
+  }
+  @media (max-width: 1024px){
+    .contenido{
+    flex-direction: column;
+    }
+    .tarjeta {
+     max-width: 95vw;
+    }
+  }
+  .ladoIzq, .ladoDer {
+    width: 100%;
+  }
+  
+  .ladoDer img {
+    width: 100%;
+    border-style: none;
+  }
+  .ladoIzq {
+    background: white;
+    color: #333;
+    padding: 48px
+  }
+  .btn {
+    display: inline-block;
+    background: white;
+    margin-right: 4px;
+    padding: 14px;
+    border-radius: 5px;
+    margin-top: 18px;
+    font-weight: bold;
+  }
+  a.btn{
+     text-decoration: none;
+  }
+  a.btn:first-of-type {
+     background: #0099ff;
+     color: white;
+     transition: all 500ms ease-in-out;
+  }
+  a.btn:hover{
+    background-color: #1a4f8b;
+  }
+  .titulocard{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 10px;
+  }
+  .titulocard img{
+    width: 30px;
+  }
+  .titulo{
+    font-weight: bold;
+  }
+  

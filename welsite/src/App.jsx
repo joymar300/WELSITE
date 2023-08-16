@@ -12,6 +12,9 @@ import Creadores from './layout/Creadores/Creadores';
 import Contenido3 from './layout/Contenido3/Contenido3';
 import Contenido4 from './layout/Contenido4/Contenido4';
 import Register from './layout/Register/Register';
+import Contenido from './layout/Continentes/continentes';
+import Contenidogrado3 from './layout/contenidogrado3/contenidogrado3';
+
 
 function App() {
   return (
@@ -28,10 +31,10 @@ function App() {
             <Route path="/signin" element={<CenteredSignIn />} />
             <Route path="*" element={<Error404 />} />
             <Route path='/creadores' element={<Creadores/>} />
-            <Route path="/contenido3" element={<Contenido3/>} />
+            <Route path="/clases/contenido3" element={<Contenidogrado3/>} />
             <Route path='/contenido4' element={<Contenido4/>}/>
             <Route path="/register" element={<Register />} />
-            <Route path='/juegos' element={<Juegos/>}/>
+            <Route path='/clases/contenido3/continentes' element={<Contenido/>}/>
           </Routes>
         </div>
         <Footer className={styles.footer} /> 

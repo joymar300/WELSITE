@@ -1,3 +1,29 @@
+.inicio{
+  background-image: url('../../assets/img/7798348.png'); 
+  background-position: center;
+background-size: cover;
+  background-repeat: no-repeat;
+    margin-top: 80px;
+    width: 100%;
+    height: 250px;
+  }
+  .inicio .titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.589);
+    text-align: center;
+  }
+  .inicio .titulo h2{
+    padding: 10px;
+    background-color: #AB6BC9;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 15px;
+  }
 .container {
   margin-top: 50px; /* Ajusta este valor según tu preferencia */
 }
@@ -10,12 +36,14 @@ h2 {
   color: #333;
 }
 .tarjeta {
-  max-width:45vw;
-  margin: 48px auto;
+  max-width:52vw;
+  margin: 43px auto;
   display: block;
   border-radius: 10px;
   /* border: 1px solid black; */
   overflow: hidden;
+  box-shadow:  17px 17px 76px #6d7d78,
+             -17px -17px 76px #ffffff;
 }
 .contenido {
   display: flex;
@@ -32,14 +60,16 @@ h2 {
   width: 100%;
 }
 .ladoDer{
-  background-color: #5252b4;
+  height: 100%;
+  /* background-image: url('../../assets/img/dinosaurio.png'); */
+
 }
 .ladoDer img {
   width: 100%;
   border-style: none;
 }
 .ladoIzq {
-  background: white;
+  
   color: #333;
   padding: 48px
 }
@@ -75,3 +105,23 @@ a.btn:hover{
 .titulo{
   font-weight: bold;
 }
+.fade-enter {
+  opacity: 0;
+  transform: translateY(10px); /* Opcional: Añade un efecto de deslizamiento */
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 5s ease-in, transform 5s ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 5s ease-out;
+}
+
