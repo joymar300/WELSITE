@@ -12,6 +12,7 @@ import Creadores from './layout/Creadores/Creadores';
 import Contenido3 from './layout/Contenido3/Contenido3';
 import Contenido4 from './layout/Contenido4/Contenido4';
 import Register from './layout/Register/Register';
+import { SliderHome } from './components/SliderHome/SliderHome';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/contenido4' element={<Contenido4/>}/>
             <Route path="/register" element={<Register />} />
             <Route path='/juegos' element={<Juegos/>}/>
+            <Route path='/SliderHome' element={<SliderHome/>}/>
           </Routes>
         </div>
         <Footer className={styles.footer} /> 

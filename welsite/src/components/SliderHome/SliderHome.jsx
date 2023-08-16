@@ -7,19 +7,35 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles.css'
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+import dino from '../../assets/img/Dinosaurio.png';
+export const  SliderHome = () =>{
+  const items = [
+    {
+      title: 'Contenido 3',
+      description: 'Aprende y juega con nuestro intersenate contenido',
+      imageUrl: dino,
+      urlNav: '/contenido3',
+    },
+    {
+      title: 'Contenido 4',
+      description: 'Aprende y juega con nuestro intersenate contenido',
+      imageUrl: Logo,
+      urlNav: '/contenido4'
+    },]
 
-export const  SliderHome = ({ items }) =>{
-    const [selectedRadio, setSelectedRadio] = useState('tap-1');
+
+   
     
     const settings = {
         dots: true,
-       fade:true,
+      
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         speed: 1000,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3000,
         
         
         responsive: [

@@ -48,7 +48,7 @@
     width: 460px;
     flex-shrink: 0;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 30px;
     box-shadow: 2px 3px 15px rgba(252,56,56,.1);
   }
   #imgTap:checked ~ .innerpart .img{

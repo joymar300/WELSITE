@@ -16,23 +16,23 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.644);
+  background: rgb(135 10 137 / 58%);
 }
 .homepage .content {
   display: flex;
-  height: 85%;
+  height: 90%;
   z-index: 3;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 }
-.homepage .content img {
-  margin-top: 70px;
+.homeLogo {
+
+  margin-top: 30px;
   height: 600px;
   width: 500px;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+
   animation: floatAnimationImg 2s infinite;
 }
 .homepage .content h1 {
@@ -69,6 +69,20 @@
   transform: scale(1.02);
   background-color: #1a4f8b;
 }
+.sliderButton{
+  position: relative;
+  bottom: 6%;
+  font-size: 50px;
+  font-weight: bold;
+  border-radius: 6px;
+  
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 1s ease-in-out;
+  animation: floatAnimationBtn 2s infinite;
+
+}
 
 @media screen and (max-width: 860px) {
   .homepage{
@@ -88,7 +102,7 @@
   .btn{
     font-size: 18px;
   }
-  .homepage .content img{
+  .homeLogo{
     width: 400px;
   }
 }
@@ -102,7 +116,7 @@
     height: 150vh;
     margin-top: 80px; /* Márgenes más pequeños para pantallas más pequeñas */
   }
-  .homepage .content img{
+  .homeLogo{
     margin: 0;
     height: 300px;
     width: 250px;
@@ -128,6 +142,15 @@
   }
   50%{
     transform: scale(1.1);
+  }
+
+}
+@keyframes floatAnimationBtn {
+  0%,100%{
+    transform: scale(1.0);
+  }
+  50%{
+    transform: scale(1.4);
   }
 
 }
