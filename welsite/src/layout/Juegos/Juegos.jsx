@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Juegos.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
-
-
+import {BiSolidTrash} from 'react-icons/bi'
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../config/firebase';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 const Juegos = () => {
     const [showFormModal, setShowFormModal] = useState(false);
     const [newCardData, setNewCardData] = useState({
@@ -67,7 +70,159 @@ const Juegos = () => {
       updatedCards.splice(index, 1);
       setCardsData(updatedCards);
     };
+
+
+
   
+    // base de datos
+  const [data, setData] = useState([]);
+  const [dataUrl, setDataUrl] = useState('');
+  const MySwal = withReactContent(Swal)
+  const [user, setUser]=useState("");
+  
+  useEffect(()=>{
+    traerContenido()
+    onAuthStateChanged(auth, verificarUser)
+  },[])
+
+  function verificarUser (user){
+    if (user) {
+    setUser(user.email)
+    console.log(user.email)
+    
+    
+    }else{
+      setUser("")
+      console.log("no hay nadie registrado")
+    }
+  
+  }
+
+  const crearcontenido = async ()=>{
+    try{
+      const loadingAlert = MySwal.mixin({
+        title: 'Creando contenido',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Muestra el indicador de progreso
+        },
+      });
+      loadingAlert.fire();
+      const docRef = await addDoc(collection(db, "contenido4"), {
+        imgUrl:'',
+        title: newCardData.title,
+        text: newCardData.text,
+      });
+
+      const folder =  ref(storage,`contenido4/${docRef.id}`)
+      await uploadBytes(folder,newCardData.imageSrc);
+      const link = await getDownloadURL(folder)
+      await updateDoc(doc(db, "contenido4", docRef.id), {
+        imgUrl: link
+      })
+      await traerContenido()
+      toggleFormModal()
+      setNewCardData({
+        imageSrc: '',
+        title: '',
+        text: '',
+      });
+      MySwal.close();
+      Swal.fire({
+        title: 'Creación exitosa',
+        text: 'El contenido ha sido creado con éxito.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+    } catch (err){
+      console.log(err)
+      Swal.fire({
+        title: 'Error al crear contenido',
+        text: 'Ha ocurrido un error al crear el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+    
+    
+  };
+
+  async function traerContenido() {
+    
+  const info = []
+    const dataRef = collection(db,"contenido4");
+    const q = query(dataRef);
+    const queySnapshot = await getDocs(q);
+    queySnapshot.forEach((doc)=>{
+      info.push({ id: doc.id, ...doc.data() });
+    });
+    
+    console.log(data)
+    setData(info);
+  }
+
+  const borrarContenido = async(docId, imgId)=>{
+    try{
+      const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará el contenido permanentemente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          confirmButton: styles.confirmButton, // Asigna la clase de estilo definida en contenido4.module.css
+        },
+      });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Eliminando contenido',
+          text: 'Procesando la eliminación...',
+          icon: 'info',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+        await deleteDoc(doc(db,"contenido4", docId ),)
+        const borrarimg = ref(storage, imgId)
+        deleteObject(borrarimg).then(()=>{
+          console.log("imagen borrada");
+          
+        }).catch((err)=>{
+          console.log("error al borrar imagen" + err);
+          
+        })
+    
+        await traerContenido()
+        Swal.fire({
+          title: 'Eliminación exitosa',
+          text: 'El contenido ha sido eliminado con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+
+    } catch(err){
+      console.error('Error al eliminar contenido:', err);
+      Swal.fire({
+        title: 'Error al eliminar contenido',
+        text: 'Ha ocurrido un error al eliminar el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+  }
+
+
+
+//fin base de datos
+
+
+
     return (
       <>
      
@@ -92,16 +247,27 @@ const Juegos = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" height="72px" width="64px" viewBox="0 0 640 512"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H448c106 0 192-86 192-192s-86-192-192-192H192zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg>
                 </div>
                 <p>{card.title}</p>
+                
               </a>
-              <button className={styles.deleteButton} onClick={() => deleteCard(index)}>
-                Delete
-              </button>
+              {
+                user ? 
+                <button className={styles.buttoncardDelete} onClick={() => deleteCard(index)}>
+                  Eliminar
+                </button>
+                
+                : ""
+              }
               
             </div>
           ))}
-          <a href="#" className={styles.float} onClick={toggleFormModal}>
-            <AiOutlinePlus className={styles.myfloat} />
-          </a>
+          {
+            user ? 
+              <a href="#" className={styles.float} onClick={toggleFormModal}>
+                <AiOutlinePlus className={styles.myfloat} />
+              </a>
+            
+            :""
+          }
   
           {showFormModal && (
             <div className={styles.formModalOverlay}>

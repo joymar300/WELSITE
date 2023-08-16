@@ -22,22 +22,24 @@ const Navbar = () => {
   const [username, setUsername] = useState([]);
   const location = useLocation();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, verificarUser);
-  }, []);
-
+  
   function verificarUser(user) {
     if (user) {
-      console.log(user.email);
-      traerUser(user);
-    } else {
-      console.log('no hay nadie registrado');
+      setUser(user.email)
+      console.log(user.email)
+      traerUser(user)
+      
+    }else{
+      
+      console.log("no hay nadie registrado")
     }
   }
 
-  async function traerUser(user) {
-    const dataRef = collection(db, 'users');
-    const q = query(dataRef, where('email', '==', user.email));
+  
+ async function traerUser (user) {
+  //mostrar el nombre del usuario logeado
+    const dataRef = collection(db,"users");
+    const q = query(dataRef, where("email", "==",user.email));
 
     const queySnapshot = await getDocs(q);
     let data = [];
@@ -54,7 +56,9 @@ const Navbar = () => {
 
   const logOut = async () => {
     try {
+      
       await signOut(auth);
+      setUser("");
     } catch (error) {
       console.log(error);
     }

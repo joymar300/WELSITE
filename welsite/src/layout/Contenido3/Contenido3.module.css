@@ -45,6 +45,19 @@
   color: white;
   transition: all 500ms ease-in-out;
 }
+ .card .buttoncardDelete {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px 27px;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #d40707;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 500ms ease-in-out;
+}
 
 .card .buttoncard:hover {
   background-color: #1a4f8b;
@@ -259,4 +272,13 @@ h2{
 
 .formModalContent button:last-child:hover {
   background-color: #1a4f8b;
+}
+
+.btnDanger {
+  border: 0;
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #c00c0c;
+  color: #fff;
+  font-size: 1em;
 }
