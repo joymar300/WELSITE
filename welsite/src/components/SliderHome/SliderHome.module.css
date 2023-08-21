@@ -156,6 +156,7 @@
       padding: auto;
       /* opacity: 0; */
       transition: .6s;
+      
     }
 
     .contentCard .title{
@@ -171,7 +172,10 @@
       font-size: 19px;
       margin-bottom: 30px;
       line-height: 1.5em;
-      text-align: justify;
+      
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .contentCard button{
 

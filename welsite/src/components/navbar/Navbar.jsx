@@ -18,10 +18,12 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Navbar = () => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState("");
   const [username, setUsername] = useState([]);
   const location = useLocation();
-
+  useEffect(() => {
+    onAuthStateChanged(auth, verificarUser);
+  }, []);
   
   function verificarUser(user) {
     if (user) {
@@ -30,7 +32,7 @@ const Navbar = () => {
       traerUser(user)
       
     }else{
-      
+      setUser("")
       console.log("no hay nadie registrado")
     }
   }

@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './continentes.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
+import withReactContent from 'sweetalert2-react-content';
+import { onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
+import { auth, db, storage } from '../../config/firebase';
+import Swal from 'sweetalert2';
+import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {BsFillTrash3Fill} from "react-icons/bs";
 
 const cardsData = [
     {
@@ -50,6 +57,155 @@ const cardsData = [
 ];
 
 const Contenido = () => {
+    // estados
+    const [data, setData] = useState([]);
+    const [dataUrl, setDataUrl] = useState('');
+    const MySwal = withReactContent(Swal)
+    const [user, setUser]=useState("");
+    
+    useEffect(()=>{
+      traerContenido()
+      onAuthStateChanged(auth, verificarUser)
+    },[])
+
+    function verificarUser (user){
+      if (user) {
+      setUser(user.email)
+      console.log(user.email)
+      
+      
+    }else{
+      setUser("")
+      console.log("no hay nadie registrado")
+    }
+    
+  }
+
+  const crearcontenido = async ()=>{
+    try{
+      const loadingAlert = MySwal.mixin({
+        title: 'Creando contenido',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Muestra el indicador de progreso
+        },
+      });
+      loadingAlert.fire();
+      const docRef = await addDoc(collection(db, "contenido3-continente"), {
+        imgUrl:'',
+        title: newCardData.title,
+        text: newCardData.text,
+        color: newCardData.color,
+      });
+
+      const folder =  ref(storage,`contenido3/continente/${docRef.id}`)
+      await uploadBytes(folder,newCardData.imageSrc);
+      const link = await getDownloadURL(folder)
+      await updateDoc(doc(db, "contenido3-continente", docRef.id), {
+        imgUrl: link
+      })
+      await traerContenido()
+      toggleFormModal()
+      setNewCardData({
+        imageSrc: '',
+        title: '',
+        text: '',
+        color:'',
+      });
+      MySwal.close();
+      Swal.fire({
+        title: 'Creación exitosa',
+        text: 'El contenido ha sido creado con éxito.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+    } catch (err){
+      console.log(err)
+      Swal.fire({
+        title: 'Error al crear contenido',
+        text: 'Ha ocurrido un error al crear el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+    
+    
+  };
+  
+  async function traerContenido() {
+    
+  const info = []
+    const dataRef = collection(db,"contenido3-continente");
+    const q = query(dataRef);
+    const queySnapshot = await getDocs(q);
+    queySnapshot.forEach((doc)=>{
+       info.push({ id: doc.id, ...doc.data() });
+     });
+    
+    console.log(data)
+    setData(info);
+  }
+
+  const borrarContenido = async(docId, imgId)=>{
+    try{
+      const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará el contenido permanentemente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          confirmButton: styles.confirmButton, // Asigna la clase de estilo definida en contenido3.module.css
+        },
+      });
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Eliminando contenido',
+          text: 'Procesando la eliminación...',
+          icon: 'info',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+        await deleteDoc(doc(db,"contenido3-continente", docId ),)
+        const borrarimg = ref(storage, imgId)
+        deleteObject(borrarimg).then(()=>{
+          console.log("imagen borrada");
+          
+        }).catch((err)=>{
+          console.log("error al borrar imagen" + err);
+          
+        })
+    
+        await traerContenido()
+        Swal.fire({
+          title: 'Eliminación exitosa',
+          text: 'El contenido ha sido eliminado con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+
+    } catch(err){
+      console.error('Error al eliminar contenido:', err);
+      Swal.fire({
+        title: 'Error al eliminar contenido',
+        text: 'Ha ocurrido un error al eliminar el contenido.',
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+  }
+
+
+
+
+
     const [showCardModal, setShowCardModal] = useState(false);
     const [showFormModal, setShowFormModal] = useState(false);
     const [activeCardIndex, setActiveCardIndex] = useState(null);
@@ -83,6 +239,7 @@ const Contenido = () => {
     };
   
     return (
+
         <div>
         <div className={styles.inicio}>
         <div className={styles.titulo}>
@@ -91,7 +248,7 @@ const Contenido = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.cardContainer}>
-          {cardsData.map((card, index) => (
+           {/* {cardsData.map((card, index) => (
             <div
               className={styles.card}
                // Aplica el color de fondo de la tarjeta
@@ -122,12 +279,54 @@ const Contenido = () => {
                 </div>
               )}
             </div>
+          ))}  */}
+          {data.map((card, index) => (
+            <div
+              className={styles.card}
+               // Aplica el color de fondo de la tarjeta
+              key={index}
+            >
+              <div className={styles.circle}
+              style={{ background: card.color , border: " 2px solid "+card.color}}
+              >
+                
+              </div>
+              <div className={styles.content}>
+                <h2>{card.title}</h2>
+                <div className={styles.buttonPosition}>
+                  <button onClick={() => toggleCardModal(index)} 
+                  style={{ background: card.color  , border: " 2px solid "+card.color }}>Know More</button>
+                  {user ? <div> <button onClick={()=>borrarContenido(card.id, card.imgUrl)} style={{background: "#b72020", border: "#b72020"}}>  <BsFillTrash3Fill/> </button></div> :""}
+
+
+                </div>
+
+              </div>
+  
+              {showCardModal && activeCardIndex === index && (
+                <div className={styles.modalOverlay}>
+                  <div className={styles.modal}>
+                    <div className={styles.modalContent}>
+                      <img className={styles.modalImage} src={card.imgUrl}></img>
+                      <h2>{card.title}</h2>
+                      <p>{card.text}</p>
+                      <button onClick={() => toggleCardModal(index)}>
+                        <GrClose />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
   
           {/* Botón flotante para abrir el modal de formulario */}
-          <a href="#" className={styles.float} onClick={toggleFormModal}>
-            <AiOutlinePlus className={styles.myfloat} />
-          </a>
+          { user ?
+            <a href="#" className={styles.float} onClick={toggleFormModal}>
+              <AiOutlinePlus className={styles.myfloat} />
+            </a>
+            :""
+          }
   
           {showFormModal && (
             <div className={styles.formModalOverlay}>
@@ -143,7 +342,7 @@ const Contenido = () => {
                       onChange={(e) =>
                         setNewCardData({
                           ...newCardData,
-                          imageSrc: URL.createObjectURL(e.target.files[0]),
+                          imageSrc:(e.target.files[0]),
                         })
                       }
                     />
@@ -188,7 +387,7 @@ const Contenido = () => {
                     <button type="button" onClick={toggleFormModal}>
                       Cancelar
                     </button>
-                    <button type="submit">Guardar</button>
+                    <button type="button" onClick={crearcontenido} >Guardar</button>
                   </form>
                 </div>
               </div>
