@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { FiHome, FiMap, FiBook, FiUsers, FiUser } from 'react-icons/fi';
+import React, {FC, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { AiOutlineUserAdd } from 'react-icons/ai';
-import { FaGamepad } from 'react-icons/fa';
-import { AiOutlineClose } from 'react-icons/ai';
-import { FiMenu } from 'react-icons/fi';
 import Logo from '../../assets/img/oli.png';
 import styles from './navbar.module.css';
 import { auth, db, userExist } from '../../config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import {
-  useCollection,
-  useCollectionData,
-  useDocumentData,
-} from 'react-firebase-hooks/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import'./style.css';
+import { FiHome, FiMap, FiBook, FiUsers, FiUser,FiMenu } from 'react-icons/fi';
+import { AiOutlineUserAdd ,AiOutlineClose } from 'react-icons/ai';
+import { FaGamepad } from 'react-icons/fa';
+import {BsFillPersonFill, BsPersonAdd} from 'react-icons/bs'
+import {MdKeyboardArrowUp} from 'react-icons/md'
+import {BiLogOut} from 'react-icons/bi'
+import { color } from 'framer-motion';
 
 const Navbar = () => {
   const [user, setUser] = useState("");
@@ -71,6 +68,9 @@ const Navbar = () => {
   const handleMenuToggle = () => {
     setShowMenu((prevShowMenu) => !prevShowMenu);
   };
+
+
+
 
   return (
     <>
@@ -132,32 +132,37 @@ const Navbar = () => {
                 <FiUsers /> Creadores
               </NavLink>
             </li>
-            {user ? (
-              <NavLink
-                to="/register"
-                className={`${styles.nav_link} ${styles.registre}`}
-                style={location.pathname === '/register' ? { backgroundColor: '' } : null}
-              >
-                <AiOutlineUserAdd /> Registrar usuario
-              </NavLink>
-            ) : (
-              ''
-            )}
-            {user ? (
-              <li>
-                <NavLink to="#" className={`${styles.nav_link}`}>
-                  {username}
-                </NavLink>
-              </li>
-            ) : (
-              ''
-            )}
+        
+           
             <li>
-              {user ? (
-                <button onClick={logOut} className={`${styles.button}`}>
-                  cerrar sesión
-                </button>
-              ) : (
+              {
+                user ? (
+
+                <div className="dropdown">
+                <div className="content">
+                  <span className="material-symbols-outlined"> <BsFillPersonFill/> </span>
+                  <p>{username}</p>
+                  <span className="material-symbols-outlined"> <MdKeyboardArrowUp/> </span>
+                </div>
+                <button type="button"></button>
+                <div className="menu">
+                  
+                  <a>
+                    <span className="material-symbols-outlined"> <BsPersonAdd/> </span>
+                    <NavLink
+                    to="/register"
+                    style={{color :'white' }} > Agregar usuario</NavLink>
+                  </a>
+                  <a onClick={logOut}>
+                    <span className="material-symbols-outlined"> <BiLogOut/> </span>
+                    <p>
+                        cerrar sesión
+                    </p>
+                  </a>
+                  
+                </div>
+              </div>
+                ):(
                 <NavLink
                   to="/signin"
                   className={`${styles.button}`}
@@ -165,8 +170,11 @@ const Navbar = () => {
                 >
                   Iniciar Sesion
                 </NavLink>
-              )}
+
+                )
+              }
             </li>
+           
           </ul>
         </nav>
       </header>

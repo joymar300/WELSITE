@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styles from './App.module.css';
-import Navbar from './components/navbar/Navbar';
 import HomeView from './layout/Home/Home';
 import SignIn from './layout/SignIn/SignIn';
 import Error404 from './components/Error/Error';
@@ -16,6 +15,8 @@ import Contenido from './layout/Continentes/continentes';
 import Contenidogrado3 from './layout/contenidogrado3/contenidogrado3';
 
 import { SliderHome } from './components/SliderHome/SliderHome';
+import Mapa from './layout/mapa/mapa';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<HomeView />} />
             <Route path="/clases" element={<Clases />} />
             <Route path="/signin" element={<CenteredSignIn />} />
+            <Route path='/mapa' element={<Mapa/>} />
             <Route path="*" element={<Error404 />} />
             <Route path='/creadores' element={<Creadores/>} />
             <Route path="/clases/contenido3" element={<Contenidogrado3/>} />

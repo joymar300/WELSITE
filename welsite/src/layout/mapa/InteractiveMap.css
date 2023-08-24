@@ -1,0 +1,20 @@
+.MapContainer {
+    border: 2px solid #f39c12; /* Borde naranja alrededor del mapa */
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .leaflet-container {
+    background-color: #d5f5e3; /* Fondo verde claro para el mapa */
+  }
+  
+  .leaflet-popup-content {
+    color: #2980b9; /* Texto azul oscuro en los popups */
+    font-weight: bold;
+  }
+  
+  /* Estilos para el icono del marcador */
+  .leaflet-marker-icon {
+    background-color: #e74c3c; /* Fondo rojo para el marcador */
+    border-radius: 50%;
+  }
