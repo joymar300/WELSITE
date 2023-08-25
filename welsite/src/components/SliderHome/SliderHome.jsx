@@ -15,7 +15,7 @@ export const  SliderHome = () =>{
       title: 'Contenido 3',
       description: '¡Explora las ciencias sociales básicas con énfasis en geografía e historia. Nuestras clases te llevarán en un emocionante viaje de aprendizaje. Descubre culturas, eventos históricos y la diversidad de nuestro planeta. Además, disfruta de recursos complementarios y sumérgete en un mundo de conocimiento en Weltsite. ¡Aprende de manera divertida y enriquecedora en tercer grado!',
       imageUrl: dino,
-      urlNav: '/contenido3',
+      urlNav: '/clases/contenido3',
     },
     {
       title: 'Contenido 4',
