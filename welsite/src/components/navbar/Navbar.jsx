@@ -127,7 +127,7 @@ const Navbar = () => {
                 className={`${styles.nav_link} ${location.pathname === '/creadores' ? styles.active : ''} ${styles.creators}`}
                 style={location.pathname === '/creadores' ? { backgroundColor: '#ff3333' } : null}
               >
-                <FiUsers /> Creadores
+                <FiUsers /> Quienes Somos
               </NavLink>
             </li>
             {user ? (

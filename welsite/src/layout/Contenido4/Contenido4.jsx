@@ -8,7 +8,7 @@ import { auth, db, storage } from '../../config/firebase';
 import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import Swal from 'sweetalert2';
-
+import Card from '../../components/Cards/card';
 const cardsData = [
     {
         imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Desembarco_de_Col%C3%B3n_de_Di%C3%B3scoro_Puebla.jpg',
@@ -315,30 +315,16 @@ const Contenido4 = () => {
         </div>
       )}
       {
-       data ? data.map((i, index)=>(
+       data ? data.map((card, index)=>(
 
-            <div key={index} className={styles.card}>
-              
-               <img src={i.imgUrl} alt={i.title} />
-              <h2>{i.title}</h2>
-              <button onClick={() => toggleCardModal(index)} className={styles.buttoncard}>
-                Mostrar más contenido
-              </button>
-              {showCardModal && activeCardIndex === index && (
-                <div className={styles.modalOverlay}>
-                  <div className={styles.modal}>
-                    <div className={styles.modalContent}>
-                      <h2>{i.title}</h2>
-                      <p>{i.text}</p>
-                      <button onClick={() => toggleCardModal(index)}>
-                        <GrClose />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            {user ? <div> <button onClick={()=>borrarContenido(i.id, i.imgUrl)} className={styles.buttoncardDelete}>  Eliminar</button></div> :""}
-            </div>
+        <Card
+        key={index}
+        card={card}
+        index={index}
+        activeCardIndex={activeCardIndex}
+        showCardModal={showCardModal}
+        toggleCardModal={toggleCardModal}
+      />
 
           
         )

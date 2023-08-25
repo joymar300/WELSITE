@@ -5,5 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   assetsInclude: ['**/*.png,'],
   plugins: [react()],
+  resolve: {
+    alias: {
+      "@stitches/react": "/path/to/@stitches/react", // Ajusta la ruta según la ubicación real
+    },
+  },
    // Agrega esta línea para incluir archivos PNG en los activos.
 })

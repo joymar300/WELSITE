@@ -1,12 +1,15 @@
 /* Contenedor padre */
 .inicio{
-background-image: url('https://img.freepik.com/vector-gratis/zona-infantil-dibujos-animados-ocio-activo-diversion_107791-19902.jpg?w=1380&t=st=1691710957~exp=1691711557~hmac=aa240c5b83f9f5572e13e4f6c14ecf491968f4a3452a277ec8c9e476dac88d07'); 
+background-image: url('../../assets/img/fondogame.webp'); 
 background-position: center;
 background-size: cover;
   background-repeat: no-repeat;
   margin-top: 80px;
   width: 100%;
-  height: 250px;
+  height: 350px;
+  --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  -webkit-mask: var(--mask-2);
+  mask: var(--mask-2);
 }
 .inicio .titulo{
   display: flex;
@@ -18,14 +21,18 @@ background-size: cover;
   text-align: center;
 }
 .inicio .titulo h2{
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
+  padding: 10px;
+    background-color: #AB6BC9;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 15px;
 }
 
 .container {
+  margin-top: -50px;
   padding: 120px;
-  background-color: #75b2f7;
+  background-color: #4FC3F7;
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */ /* Asegura que el contenedor ocupe toda la altura de la ventana */
@@ -150,6 +157,13 @@ background-size: cover;
     transition: transform 0.3s ease-out;
   }
   @media (max-width: 768px) {
+    .inicio{
+      background:#AB6BC9;
+    }
+    .inicio .titulo{
+      background-color: #AB6BC9;
+      border: none;
+    }
     .cardContainer {
       grid-template-columns: 1fr;
     }

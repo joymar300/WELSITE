@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './continentes.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
+import Card from '../../components/Cards/card';
 
 const cardsData = [
     {
@@ -50,85 +51,63 @@ const cardsData = [
 ];
 
 const Contenido = () => {
-    const [showCardModal, setShowCardModal] = useState(false);
-    const [showFormModal, setShowFormModal] = useState(false);
-    const [activeCardIndex, setActiveCardIndex] = useState(null);
-    const [newCardData, setNewCardData] = useState({
+  const [showCardModal, setShowCardModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [activeCardIndex, setActiveCardIndex] = useState(null);
+  const [newCardData, setNewCardData] = useState({
+    imageSrc: '',
+    title: '',
+    text: '',
+    color: '',
+  });
+
+  const toggleCardModal = (index) => {
+    setActiveCardIndex(index);
+    setShowCardModal(!showCardModal);
+  };
+
+  const toggleFormModal = () => {
+    setShowFormModal(!showFormModal);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newCard = { ...newCardData };
+    cardsData.push(newCard);
+    setNewCardData({
       imageSrc: '',
       title: '',
       text: '',
-      color: '', // Agrega el campo de color en los datos de la nueva tarjeta
+      color: '',
     });
-  
-    const toggleCardModal = (index) => {
-      setActiveCardIndex(index);
-      setShowCardModal(!showCardModal);
-    };
-  
-    const toggleFormModal = () => {
-      setShowFormModal(!showFormModal);
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const newCard = { ...newCardData };
-      cardsData.push(newCard);
-      setNewCardData({
-        imageSrc: '',
-        title: '',
-        text: '',
-        color: '', // Limpia el color después de agregar la tarjeta
-      });
-      setShowFormModal(false);
-    };
-  
-    return (
-        <div>
-        <div className={styles.inicio}>
+    setShowFormModal(false);
+  };
+
+  return (
+    <div className={styles.total}>
+      <div className={styles.inicio}>
         <div className={styles.titulo}>
-        <h2>Los Continentes</h2>
+          <h2>Los Continentes</h2>
         </div>
       </div>
       <div className={styles.container}>
         <div className={styles.cardContainer}>
           {cardsData.map((card, index) => (
-            <div
-              className={styles.card}
-               // Aplica el color de fondo de la tarjeta
+            <Card
               key={index}
-            >
-              <div className={styles.circle}
-              style={{ background: card.color }}
-              >
-                
-              </div>
-              <div className={styles.content}>
-                <h2>{card.title}</h2>
-                <button onClick={() => toggleCardModal(index)} 
-                style={{ background: card.color }}>Know More</button>
-              </div>
-  
-              {showCardModal && activeCardIndex === index && (
-                <div className={styles.modalOverlay}>
-                  <div className={styles.modal}>
-                    <div className={styles.modalContent}>
-                      <h2>{card.title}</h2>
-                      <p>{card.text}</p>
-                      <button onClick={() => toggleCardModal(index)}>
-                        <GrClose />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+              card={card}
+              index={index}
+              activeCardIndex={activeCardIndex}
+              showCardModal={showCardModal}
+              toggleCardModal={toggleCardModal}
+            />
           ))}
-  
+
           {/* Botón flotante para abrir el modal de formulario */}
           <a href="#" className={styles.float} onClick={toggleFormModal}>
             <AiOutlinePlus className={styles.myfloat} />
           </a>
-  
+
           {showFormModal && (
             <div className={styles.formModalOverlay}>
               <div className={styles.formModal}>
@@ -147,7 +126,7 @@ const Contenido = () => {
                         })
                       }
                     />
-  
+
                     <label htmlFor="title">Título:</label>
                     <input
                       type="text"
@@ -157,7 +136,7 @@ const Contenido = () => {
                         setNewCardData({ ...newCardData, title: e.target.value })
                       }
                     />
-  
+
                     <label htmlFor="text">Texto:</label>
                     <textarea
                       id="text"
@@ -166,25 +145,24 @@ const Contenido = () => {
                         setNewCardData({ ...newCardData, text: e.target.value })
                       }
                     />
-  
+
                     <label htmlFor="color">Color:</label>
                     <input
-                        type="color"
-                        id="color"
-                        value={newCardData.color}
-                        onChange={(e) =>
+                      type="color"
+                      id="color"
+                      value={newCardData.color}
+                      onChange={(e) =>
                         setNewCardData({ ...newCardData, color: e.target.value })
-                        }
-                        style={{
-                          border: 'none',
-                          outline: 'none',
-                          padding: '2px',
-                          boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-                          
-                          cursor: 'pointer',
-                        }}
+                      }
+                      style={{
+                        border: 'none',
+                        outline: 'none',
+                        padding: '2px',
+                        boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
+                        cursor: 'pointer',
+                      }}
                     />
-  
+
                     <button type="button" onClick={toggleFormModal}>
                       Cancelar
                     </button>
@@ -196,8 +174,8 @@ const Contenido = () => {
           )}
         </div>
       </div>
-      </div>
-    );
-  };
-  
-  export default Contenido;
+    </div>
+  );
+};
+
+export default Contenido;

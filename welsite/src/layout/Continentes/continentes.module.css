@@ -1,10 +1,35 @@
+.total{
+  
+}
 .inicio{
-    background-image: url('https://img.freepik.com/vector-gratis/mapamundi-continentes-diferentes-colores_1308-91653.jpg?w=1800&t=st=1691718320~exp=1691718920~hmac=c5b0677b15e954185e9b2111537efb0e382d6932cc59055a018927b7a13ed14f'); 
+    background-image: url('../../assets/images/colombia.jpg'); 
+    background-position: center;
     background-size: cover;
       margin-top: 80px;
       width: 100%;
       height: 250px;
+      animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
     }
+    @keyframes navbar {
+      0% {
+        transform: translateY(-200px);
+        opacity: 0; /* Empieza con opacidad 0 */
+      }
+      40% {
+        transform: translateY(20px); /* Descenso controlado para el rebote */
+        opacity: 1; /* Incrementa la opacidad gradualmente */
+      }
+      60% {
+        transform: translateY(10px); /* Rebote */
+      }
+      80% {
+        transform: translateY(5px); /* Rebote más suave */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
     .inicio .titulo{
       display: flex;
       justify-content: center;
@@ -37,7 +62,20 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
+    
   }
+  @keyframes show{
+    from {
+      opacity: 0;
+      scale: 25%;
+    }
+    to{
+      opacity: 1;
+      scale: 100%;
+    }
+  }
+  
   
   .card {
     width: 18rem;
@@ -45,10 +83,10 @@
     height: 15rem;
     transition: 0.5s;
     overflow: hidden;
-    background: #fff;
     position: relative;
     border-radius: 1rem;
     box-shadow: 0px 0px 8px 0px rgb(206 206 206 / 80%);
+    animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   }
   
   .circle {
@@ -214,6 +252,11 @@
     .card {
       flex: 1 1 100%;
       max-width: none;
+      view-timeline-name:--revealing-image;
+  animation-name: show;
+  animation-fill-mode: both;
+  animation-timeline: --revealing-image;
+  animation-range:entry 25% cover 50%;
     }
   
     .modal {

@@ -1,0 +1,73 @@
+.department-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.slider-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  border-radius: 50%; /* Hace la imagen redondeada */
+}
+
+.text-container {
+  flex: 2;
+}
+
+.prev-button {
+  width:30px; /* Divide el espacio para los botones en dos */
+  margin-right: auto; /* Mueve el botón "Previous" al borde izquierdo */
+  border-radius: 10px; /* Añade borde redondeado al botón */
+  background-color: #007b52; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Quita el borde */
+  padding: 10px; /* Añade espacio alrededor del texto */
+  cursor: pointer;
+}
+.prev-button .btnpv {
+  fill: white;
+  color: #ffffff;
+}
+
+.next-button {
+  width: 48%; /* Divide el espacio para los botones en dos */
+  margin-left: auto; /* Mueve el botón "Next" al borde derecho */
+  border-radius: 10px; /* Añade borde redondeado al botón */
+  background-color: #007b52; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Quita el borde */
+  padding: 10px; /* Añade espacio alrededor del texto */
+  cursor: pointer;
+}
+.image-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-fade.loading {
+  opacity: 0.5;
+}
+
+.image-fade:not(.loading) {
+  opacity: 1;
+}
+
+/* Resto del CSS ... */

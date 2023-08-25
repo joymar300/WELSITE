@@ -53,6 +53,28 @@ const Contenidogrado3 = () => {
         
       </div>
     </div>
+    <div className={styles.tarjeta}>
+      <div className={styles.contenido}>
+        <div className={styles.ladoIzq}>
+          <div className={styles.titulocard}>
+            <h2 className={styles.titulo}>¿Qué son océanos?</h2>
+          </div>
+          <div className={styles.cuerpo}>
+            <p>
+            Los océanos son como enormes lagos de agua salada que cubren gran parte de la Tierra. Imagina que la Tierra es como una gran esfera y los océanos son como charcos de agua gigantes que se extienden por todo su superficie. Hay cinco océanos en total. ¡Vamos a conocerlos!
+            </p>
+            <Link className={styles.btn} to="/contenido4"> {/* Usa Link en lugar de <a> */}
+            Acceder al Contenido
+            </Link>
+          </div>
+        </div>
+        {/* <div className={styles.ladoDer}>
+          <img src={dino} alt="" srcset="" />
+        </div> */}
+        
+      </div>
+    </div>
+    
    
     </div>
     </div>

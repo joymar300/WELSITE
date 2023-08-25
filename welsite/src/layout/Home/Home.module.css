@@ -1,14 +1,21 @@
 /* Home */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 .homepage {
   padding: 30px;
   height: 100vh;
   width: 100%;
   position: relative;
-  background: url('../../assets/img/6010415.png');
+  background: url('../../assets/images/7941327.png');
   background-position: center ;
   background-size: cover;
-  background-attachment: fixed;
+  --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  -webkit-mask: var(--mask-2);
+  mask: var(--mask-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .homepage::before {
   content: "";
   position: absolute;
@@ -16,38 +23,65 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: rgb(135 10 137 / 58%);
 }
 .homepage .content {
   display: flex;
-  height: 90%;
-  z-index: 3;
+  height: 100%;
+  width: 80%;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
+  gap: 30px;
 }
 .homeLogo {
-
+  width: 50%;
   margin-top: 30px;
-  height: 600px;
-  width: 500px;
   align-items: center;
 
-  animation: floatAnimationImg 2s infinite;
+  animation: 2s side-content-img 0.5s ease-in-out;
+}
+@keyframes side-content-img{
+  0% {
+      transform: translateX(1200px);
+  }
+  100%{
+      transform: translateX(0px);
+  }
 }
 .homepage .content h1 {
-  font-size: 60px;
+  letter-spacing: 4px;
+  font-family: 'Bangers', cursive;
+  color: #fff;
+  font-size: 90px;
   font-weight: 700;
   margin-bottom: 10px;
-  animation: floatAnimation 3s infinite; /* Cambia el valor "3s" para ajustar la velocidad */
+  /* animation: floatAnimation 3s infinite;  */
+}
+.homepage .content h2 {
+  letter-spacing: 4px;
+  font-family: 'Bangers', cursive;
+  color: #fff;
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* animation: floatAnimation 3s infinite;  */
 }
 .homepage .content .text {
+
   margin-bottom: 50px;
   color: #fff;
   font-size: 20px;
-  text-align: center;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  animation: 2s side-content-text 0.5s ease-in-out;
 }
+@keyframes side-content-text{
+  0% {
+    transform: translateX(-1200px); /* Valor negativo para que el elemento entre desde la izquierda */
+  }
+  /* Define más pasos aquí */
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .buttons{
   display: flex;
   align-items: center;
@@ -94,15 +128,35 @@
   animation: floatAnimationBtn 2s infinite;
 
 }
+.SliderHome{
+  view-timeline-name:--revealing-image;
+  animation-name: show;
+  animation-fill-mode: both;
+  animation-timeline: --revealing-image;
+  animation-range:entry 25% cover 50%;
+  z-index: -1;
+  margin-top: -45px;
+}
 
 @media screen and (max-width: 860px) {
   .homepage{
     margin-top: 80px;
+    width: 100%;
     height: 50%;
     padding-top: 0;
   }
+  .homepage .content {
+    /* ... your existing styles ... */
+    padding-top: 30px;
+    width: 100%; /* Adjust the width to make the text full width */
+  }
     .homepage .content h1 {
     font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .homepage .content h2 {
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 10px;
   }
@@ -118,15 +172,22 @@
   .homeLogo{
     width: 400px;
   }
+  .homeLogo {
+    display: none; /* Hide the logo */
+  }
 }
 @media (max-width: 768px) {
   .homepage{
-    background: url('../../assets/img/fondoresponsive.png');
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
   background-position: center ;
   background-size: cover;
   background-attachment: fixed;
+  text-align: center;
+
 }
-  
+ .homeLogo {
+    display: none; /* Hide the logo */
+  } 
   .contenedor {
     height: 150vh;
     margin-top: 80px; /* Márgenes más pequeños para pantallas más pequeñas */
@@ -152,14 +213,15 @@
   }
 }
 @keyframes floatAnimationImg {
-  0%,100%{
-    transform: scale(1.05);
+  0%, 100% {
+    transform: translateY(0);
   }
-  50%{
-    transform: scale(1.1);
+  50% {
+    transform: translateY(-20px);
   }
-
 }
+
+
 @keyframes floatAnimationBtn {
   0%,100%{
     transform: scale(1.0);
@@ -168,5 +230,15 @@
     transform: scale(1.4);
   }
 
+}
+@keyframes show{
+  from {
+    opacity: 0;
+    scale: 25%;
+  }
+  to{
+    opacity: 1;
+    scale: 100%;
+  }
 }
 
