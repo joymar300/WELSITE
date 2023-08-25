@@ -55,7 +55,7 @@ const HomeView = () => {
           <SliderHome ></SliderHome>  
     </div>
     <div>
-    <DepartmentSlider className={styles.DepartmentSlider}/>
+    {/* <DepartmentSlider className={styles.DepartmentSlider}/> */}
     </div>
     
     

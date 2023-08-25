@@ -21,7 +21,7 @@ const DetalleContenido = () => {
             ))}
           </p>
       </div>
-      <img src={card.imageSrc} alt={card.title} className={styles.image} />
+      <img src={card.imgUrl} alt={card.title} className={styles.image} />
     </div>
     </div>
   );
