@@ -252,6 +252,7 @@ const borrarContenido = async(docId, imgId)=>{
               card={card}
               index={index}
               user={user}
+              borarContent={borrarContenido}
               activeCardIndex={activeCardIndex}
               showCardModal={showCardModal}
               toggleCardModal={toggleCardModal}

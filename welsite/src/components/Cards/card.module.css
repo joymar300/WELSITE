@@ -1,0 +1,26 @@
+.contain{
+    padding: auto;
+    background-color: blue;
+}
+
+.trashButtom{
+    background: none;
+    color: white;
+    margin: auto;
+    width: 20%;
+    height: 20%;
+    background: #d33d3d;
+    padding: auto;
+    left: 81%;
+    top: 80%;
+    position: absolute;
+    text-align: center;
+    border: none;
+    border-radius: 1rem 0px 0px 0px;
+    z-index: 2;
+
+   
+}
+
+
+
