@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
 import { auth, db, storage } from '../../../config/firebase'
-
+import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 
 const cardsData = [
@@ -288,7 +288,7 @@ const borrarContenido = async(docId, imgId)=>{
                       onChange={(e) =>
                         setNewCardData({
                           ...newCardData,
-                          imageSrc: URL.createObjectURL(e.target.files[0]),
+                          imageSrc: e.target.files[0],
                         })
                       }
                     />
@@ -332,7 +332,7 @@ const borrarContenido = async(docId, imgId)=>{
                     <button type="button" onClick={toggleFormModal}>
                       Cancelar
                     </button>
-                    <button type="submit">Guardar</button>
+                    <button type="submit" onClick={crearcontenido} >Guardar</button>
                   </form>
                 </div>
               </div>
