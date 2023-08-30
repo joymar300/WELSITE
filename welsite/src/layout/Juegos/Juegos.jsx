@@ -33,20 +33,25 @@ const Juegos = () => {
   {
     imageSrc: 'https://humanidades.com/wp-content/uploads/2019/05/epoca-colonial-1-e1588461602649.jpg',
     title: 'Juego #3',
+    link:'https://es.educaplay.com/recursos-educativos/15680643-completa_el_texto_weltsite.html'
   },
   {
-    imageSrc: 'https://cdn.colombia.com/images/v2/colombia-info/historia-colombia/epoca-hispanica/sociedad-colonial/sociedad-esclavista-800.jpg',
+    link:'https://es.educaplay.com/recursos-educativos/15673125-weltsite.html',
     title: 'Juego #4',
     text:
       'Las principales colonias en América estuvieron bajo domino español, portugués, y luego la anglosajón. La más extensa de las tres fue la española, que tras la llegada al continente en el siglo XV procedió a su sangrienta conquista.'
   },
   {
-    imageSrc: 'https://spanishincolombia.caroycuervo.gov.co/documentos/imagenes/Region-Andina.jpg',
+    link:'https://es.educaplay.com/recursos-educativos/15680311-relieves.html',
     title: 'Juego #5',
     text:
       'La región Andina cuenta con una gran diversidad natural y por ella pasa la cordillera de Los Andes. El clima de esta región es muy cambiante ya que en ella se dan grandes variaciones de altitud, pudiéndose encontrar tres tipos de clima: tropical, subtropical y templado. En cuanto a su biodiversidad, presenta una fauna y flora únicas: son las orquídeas, la quina y el monedero las especies de vegetales más representativas y el colibrí, el cóndor y el zorro colorado son las especies de animales que representan la región.'
 
-  }
+  },
+  {
+    title: 'Juego #6',
+    link:'https://es.educaplay.com/recursos-educativos/15672919-minerales_en_weltsite.html'
+  },
     ]);
   
     const toggleFormModal = () => {
@@ -243,7 +248,7 @@ const Juegos = () => {
                 target="_blank"
               >
                 <div className={styles.overlay}></div>
-                <div className={styles.circle}>
+                <div className={styles.circle} >
                 <svg xmlns="http://www.w3.org/2000/svg" height="72px" width="64px" viewBox="0 0 640 512"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H448c106 0 192-86 192-192s-86-192-192-192H192zM496 168a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM392 304a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg>
                 </div>
                 <p>{card.title}</p>

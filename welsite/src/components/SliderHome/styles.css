@@ -22,7 +22,7 @@
   }
   
   .slick-dots.slick-thumb li.slick-active {
-    background: linear-gradient(147deg,#f6b323 0%, #f23b26 74%);
+    background-color: #0099FF;
     border-radius: 10px;
     
     transition: transform .6s;

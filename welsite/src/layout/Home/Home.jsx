@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from './Home.module.css'; // Importa los estilos como un objeto
-import homeLogo from '../../assets/images/planet.png';
+import homeLogo from '../../assets/images/planet.webp';
 import Logo from '../../assets/img/zorro.png';
 import dino from '../../assets/img/Dinosaurio.png';
 import ClasesComponent from "../Clases/Clases";
@@ -55,7 +55,7 @@ const HomeView = () => {
           <SliderHome ></SliderHome>  
     </div>
     <div>
-    <DepartmentSlider className={styles.DepartmentSlider}/>
+    {/* <DepartmentSlider className={styles.DepartmentSlider}/> */}
     </div>
     
     

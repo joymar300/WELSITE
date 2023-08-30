@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './contenidogrado3.module.css'; // Importa los estilos del módulo CSS
 
 import { Link } from 'react-router-dom';
+import BotonAtras from '../../components/ButtonBack/ButtonBack';
 
 const Contenidogrado3 = () => {
   return (
@@ -77,6 +78,7 @@ const Contenidogrado3 = () => {
     
    
     </div>
+    <BotonAtras/>
     </div>
   );
 };

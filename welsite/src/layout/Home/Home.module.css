@@ -5,7 +5,7 @@
   height: 100vh;
   width: 100%;
   position: relative;
-  background: url('../../assets/images/7941327.png');
+  background: url('../../assets/images/7941327.webp');
   background-position: center ;
   background-size: cover;
   --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
@@ -129,11 +129,9 @@
 
 }
 .SliderHome{
-  view-timeline-name:--revealing-image;
   animation-name: show;
-  animation-fill-mode: both;
-  animation-timeline: --revealing-image;
-  animation-range:entry 25% cover 50%;
+
+  
   z-index: -1;
   margin-top: -45px;
 }
@@ -179,7 +177,8 @@
 }
 @media (max-width: 768px) {
   .homepage{
-    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-color: #4D97FF;
+  background-image: url('');
   background-position: center ;
   background-size: cover;
   background-attachment: fixed;

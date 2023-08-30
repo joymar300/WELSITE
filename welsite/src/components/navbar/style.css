@@ -12,7 +12,7 @@
     border-radius: 6px;
     font-family: inherit;
     font-size: 17px;
-    background: #ea8d8d;
+    background: #BED56C;
   }
   
   .dropdown > .content {
@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    color: #f7f7f7;
+    color: #333;
  
   }
   
@@ -41,6 +41,7 @@
     transform: scaleX(0);
     background: rgb(255 255 255 / 30%);
     transition: 0.3s;
+    color: #333;
   }
   
   .dropdown:hover > .content::after {
@@ -76,8 +77,9 @@
     visibility: hidden;
     opacity: 0;
     scale: 0.85;
-    background: linear-gradient(#ea8d8d, #a890fe);
+   background-color: #fff;
     transition: 0.3s;
+    color: #333;
   }
   
   .dropdown:hover > .menu {
@@ -90,14 +92,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #f7f7f7;
+    color: #333;
     font-size: 14px;
     padding: 0 24px;
+    transition: all 0.5s ease-in-out;
   }
   
-  .dropdown > .menu > a:hover {
+  .dropdown > .menu > a:nth-child(1):hover {
     background: rgb(0 0 0 / 10%);
   }
+  .dropdown > .menu > a:nth-child(2):hover {
+    background: rgba(199, 25, 25, 0.961);
+    color: white;
+    height: auto;
+  }
+  
   
   .dropdown > .menu > a > span {
     font-size: 20px;

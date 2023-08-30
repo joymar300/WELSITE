@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './continentes.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
-import Card from '../../components/Cards/card';
-import withReactContent from 'sweetalert2-react-content';
-import { onAuthStateChanged } from 'firebase/auth';
-import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
-import { auth, db, storage } from '../../config/firebase';
-import Swal from 'sweetalert2';
-import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import {BsFillTrash3Fill} from "react-icons/bs";
+import Card from '../../../components/Cards/card';
+import BotonAtras from '../../../components/ButtonBack/ButtonBack';
 
 const cardsData = [
     {
@@ -20,6 +14,8 @@ const cardsData = [
         'África es un continente completamente rodeado de mares y océanos, ya que se encuentra entre el océano Atlántico (que lo limita al Oeste) el océano Índico (que lo limita al Este) y el mar Mediterráneo (que lo limita al Norte y lo separa de Europa). \n\n'+
         '• La superficie total de África es de 30.272.922 kilómetros cuadrados y su población es de más de 1320 millones de habitantes. En su territorio se encuentran 54 países. Su relieve es predominantemente de llanura, por el clima lluvioso y su relieve predominantemente llano, el continente se caracteriza por la presencia de largos y caudalosos ríos los más extensos son: el río Nilo (el segundo más extenso del mundo), el Congo y el Níger.'
         ,
+        color: '#289dd2',
+
     },
   {
     imageSrc: 'https://img.freepik.com/vector-premium/mapa-mundial-animales-america-ninos_81894-1211.jpg?w=2000',
@@ -31,12 +27,14 @@ const cardsData = [
     '• América del Sur. Con una superficie de 17.800.000 km2, alberga a más de 423 millones de habitantes distribuidos en 12 países. Aquí se encuentra el Aconcagua, el pico más alto de América.\n\n' +
     '• América Central: la región con menor superficie de América, con 800.000 km2, y aproximadamente 105 millones de habitantes y está integrada por  20 países independientes. Es una zona de gran actividad volcánica y sísmica., se caracteriza por un clima cálido y húmedo.\n\n' +
     '• América del Norte. Con una enorme superficie de 24.700.000 km2, está formado por Canadá, México, Estados Unidos y Groenlandia. Su población es de aproximadamente 500 millones de habitantes.',
+    color: '#3cc091',
   },
   {
     imageSrc: 'https://previews.123rf.com/images/alfazetchronicles/alfazetchronicles1701/alfazetchronicles170100049/69365220-mapa-del-continente-ant%C3%A1rtico-con-la-ilustraci%C3%B3n-del-vector-de-animales-de-la-fauna-delf%C3%ADn-ballena.jpg',
     title: 'La Antártida',
     text:
       'Todo el continente se encuentra cubierto de hielo, y solo está habitado por organismos adaptados a condiciones climáticas extremas. La Antártida, con más de 14 millones de kilómetros cuadrados de extensión, no tiene población permanente, y solo tiene habitantes temporales cuyo número varía entre 1.000 y 4.000 según la época del año, la mayoría de estas personas pertenecen a expediciones científicas.',
+      color:'#c03c5c',
   },
   {
     imageSrc: 'https://img.freepik.com/vector-premium/mapa-asia-diferentes-animales-banner-divertidos-dibujos-animados-ninos-continente_93083-1011.jpg?w=2000',
@@ -45,6 +43,7 @@ const cardsData = [
       'Es el continente con mayor superficie: 44.541.138 km2. También es el continente con mayor población, con 4500 millones de habitantes. Limita con el océano Glaciar Ártico al norte, el océano Índico al sur, el océano Pacífico al oeste y los montes Urales al este. \n\n'+
       'Está compuesto por 48 países, y aunque en su relieve predominan mesetas y llanuras, también pueden encontrarse elevados sistemas montañosos al centro y oeste, como la cordillera del Himalaya donde se ubica el Monte Everest, el más elevado del planeta, con 8848 metros de altura. Su gran extensión y lo húmedo de la mayoría de sus climas también determina la presencia de grandes cuencas hidrográficas y largos ríos. Los más extensos son el río Yangtsé, el Amarillo y el Mekong.'
       ,
+      color:'#d68d38',
   },
   {
     imageSrc: 'https://img.freepik.com/vector-gratis/ilustracion-mapa-ninos-dibujados-mano_23-2149562338.jpg?w=2000',
@@ -52,7 +51,8 @@ const cardsData = [
     text:
       'Se encuentra en el hemisferio norte. Es el segundo continente más pequeño con una superficie de 10.530.751 kilómetros cuadrados. Su población es de 740 millones de habitantes, con una densidad de población de 70 habitantes por kilómetro cuadrado. \n\n'+
       'Está compuesto por 47 países y otros Estados como Mónaco o el Vaticano, que son territorios con estatus especiales. En su relieve se destaca el monte Elbrús, con una altura de 5.633 metros sobre el nivel del mar, en la región del Cáucaso. Como resultado de la gran variedad de relieves y del tipo de clima que predomina, el continente europeo presenta gran cantidad de ríos de distinto caudal y extensión. Los más largos de Europa son el Volga, el Danubio y el Ural.\n\n'+
-      'Es importante tener en cuenta que la delimitación de los continentes es un concepto geográfico y puede haber diferentes interpretaciones y divisiones en función de los criterios utilizados. Por ejemplo, algunas clasificaciones consideran a América como un solo continente, mientras que otras lo dividen en América del Norte y América del Sur',
+      'Es importnte tener en cuenta que la delimitación de los continentes es un concepto geográfico y puede haber diferentes interpretaciones y divisiones en función de los criterios utilizados. Por ejemplo, algunas clasificaciones consideran a América como un solo continente, mientras que otras lo dividen en América del Norte y América del Sur',
+      color:'#b139b1',
   }
   // Agrega más objetos de datos para más tarjetas...
 ];
@@ -129,7 +129,7 @@ const Contenido = () => {
                       onChange={(e) =>
                         setNewCardData({
                           ...newCardData,
-                          imageSrc:(e.target.files[0]),
+                          imageSrc: URL.createObjectURL(e.target.files[0]),
                         })
                       }
                     />
@@ -173,7 +173,7 @@ const Contenido = () => {
                     <button type="button" onClick={toggleFormModal}>
                       Cancelar
                     </button>
-                    <button type="button" onClick={crearcontenido} >Guardar</button>
+                    <button type="submit">Guardar</button>
                   </form>
                 </div>
               </div>
@@ -181,6 +181,7 @@ const Contenido = () => {
           )}
         </div>
       </div>
+      <BotonAtras/>
     </div>
   );
 };

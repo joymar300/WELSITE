@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Creadores.module.css'; // Importa los estilos del módulo CSS
-import gato from '../../assets/img/gato.svg'
+import gato from '../../assets/img/gato.webp'
 
 const Creadores = () => {
     return (

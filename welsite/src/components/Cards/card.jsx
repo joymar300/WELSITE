@@ -1,7 +1,8 @@
+// Card.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../layout/Continentes/continentes.module.css';
+import styles from '../../components/Cards/card.module.css';
 
 const Card = ({ card, index }) => {
   const navigate = useNavigate();

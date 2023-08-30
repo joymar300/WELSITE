@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './clases.module.css'; // Importa los estilos del módulo CSS
-import Numero3 from '../../assets/img/300ppi/numero3.png';
-import Numero4 from '../../assets/img/300ppi/numero4.png';
 import { NavLink, useLocation } from 'react-router-dom'; // Importa useLocation
 
 

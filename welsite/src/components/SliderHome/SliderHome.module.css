@@ -1,8 +1,6 @@
 
 /*slider*/
-.body{
 
-}
 .containerSliderHome{
 
   padding: 20px;
@@ -117,14 +115,14 @@
     color: #fff0e6;
     font-weight: 600;
     letter-spacing: 1px;
-    border-radius: 50px;
+    border-radius: 15px;
     cursor: pointer;
     outline: none;
-    border: 1px solid #fd3535;
-    background: linear-gradient(147deg, #fe8a39  0%, #fd3838 74%);
+    background: #0099FF;
+    transition: all 500ms ease-in-out;
   }
   .contentCard button:hover{
-    background: linear-gradient(147deg, #fe791b 0%, #fd1c1c 74%);
+    background: #006eff;
   }
   .sliders{
     position: absolute;

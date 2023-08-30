@@ -1,32 +1,25 @@
-.total{
-  
-}
+
 .inicio{
-    background-image: url('../../assets/images/colombia.jpg'); 
+    background-image: url('../../../assets/images/20415.webp'); 
     background-position: center;
     background-size: cover;
       margin-top: 80px;
       width: 100%;
       height: 250px;
-      animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+      animation: prueba 1s ease-in-out;
+      --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+      -webkit-mask: var(--mask-2);
+      mask: var(--mask-2);
+      
     }
-    @keyframes navbar {
-      0% {
+    @keyframes prueba  {
+      0%{
+        opacity: 0;
         transform: translateY(-200px);
-        opacity: 0; /* Empieza con opacidad 0 */
       }
-      40% {
-        transform: translateY(20px); /* Descenso controlado para el rebote */
-        opacity: 1; /* Incrementa la opacidad gradualmente */
-      }
-      60% {
-        transform: translateY(10px); /* Rebote */
-      }
-      80% {
-        transform: translateY(5px); /* Rebote más suave */
-      }
-      100% {
-        transform: translateY(0);
+      100%{
+        opacity: 1;
+        transform: translateY(0px);
       }
     }
     
@@ -40,20 +33,22 @@
       text-align: center;
     }
     .inicio .titulo h2{
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
+      padding: 10px;
+    background-color: #00b7ff;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 15px;
     }
   /* Contenedor padre */
  
   
   /* Contenedor de tarjetas */
   .cardContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
-    gap: 25px ;
-    /*  */ /* Puedes eliminar esta línea */
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to a new line */
+    justify-content: center; /* Center-align cards horizontally */
+    gap: 25px;
   }
   
   
@@ -62,6 +57,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
     
     
   }
@@ -77,111 +73,6 @@
   }
   
   
-  .card {
-    width: 18rem;
-    margin: 1rem;
-    height: 15rem;
-    transition: 0.5s;
-    overflow: hidden;
-    position: relative;
-    border-radius: 1rem;
-    box-shadow: 0px 0px 8px 0px rgb(206 206 206 / 80%);
-    animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-  }
-  
-  .circle {
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    transition: 0.5s;
-    position: relative;
-    text-align: center;
-    clip-path: circle(20% at 0 0);
-    border-radius: 1rem 0px 0px 0px;
-  }
-  
-  .circle img {
-    color: #fff;
-    font-size: 2rem;
-    padding: 70px 0;
-  }
-  
-  .content {
-      bottom: 10px;
-    padding: 10px;
-    overflow: hidden;
-    text-align: center;
-    position: absolute;
-  }
-  
-  .content h2 {
-      color: #666;
-  }
-  
-  .content button {
-      border: 0px;
-      color: #fff;
-      margin: 0.5rem;
-      font-size: 16px;
-      cursor: pointer;
-      padding: 8px 20px;
-      position: relative;
-      border-radius: 50px;
-  }
-  
-  .card:nth-child(1) .circle,
-  .card:nth-child(1) .content button{
-      transition: .5s;
-      background: #289dd2;
-      border: 2px solid #289dd2;
-  }
-  
-  .card:nth-child(2) .circle,
-  .card:nth-child(2) .content button{
-      transition: 0.5s;
-      background: #3cc091;
-      border: 2px solid #3cc091;
-  }
-  
-  .card:nth-child(3) .circle,
-  .card:nth-child(3) .content button{
-      transition: 0.5s;
-      background: #c03c5c;
-      border: 2px solid #c03c5c;
-  }
-  .card:nth-child(4) .circle,
-  .card:nth-child(4) .content button{
-      transition: 0.5s;
-      background: #d68d38;
-      border: 2px solid #d68d38;
-  }
-  .card:nth-child(5) .circle,
-  .card:nth-child(5) .content button{
-      transition: 0.5s;
-      background: #b139b1;
-      border: 2px solid #b139b1;
-  }
-  
-  
-  
- 
-  
-  .card:hover .circle{
-      clip-path: circle(140% at 0 0);
-  }
-  
-  .card:hover .content h2{
-      color: #fff;
-  }
-  
-  .card:hover .content button{
-      border: 2px solid #fff;
-  }
-  
-  .card:hover .content button:hover{
-      background: #fff;
-      color: #202020;
-  }
   
   .modalOverlay {
     position: fixed;
@@ -252,15 +143,17 @@
   @media (max-width: 768px) {
     .cardContainer {
       grid-template-columns: 1fr;
+      
     }
     .card {
       flex: 1 1 100%;
       max-width: none;
-      view-timeline-name:--revealing-image;
-  animation-name: show;
-  animation-fill-mode: both;
-  animation-timeline: --revealing-image;
-  animation-range:entry 25% cover 50%;
+    }
+    .inicio{
+      background: #00b7ff;
+    }
+    .inicio .titulo{
+      background: #00b7ff;
     }
   
     .modal {
@@ -399,4 +292,15 @@
   .formModalContent button:last-child:hover {
     background-color: #1a4f8b;
   }
-  
+  @media (max-width: 1400px) {
+    /* Updated styles for smaller screens */
+    .cardContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    .inicio{
+      background-color: #0099ff;
+    }
+    /* ... other styles for modals and other elements ... */
+}
+

@@ -47,3 +47,17 @@ section.mapa {
   position: relative;
   width: 100vw;
 }
+.map{
+  animation: prueba 1s ease-in-out;
+
+}
+@keyframes prueba  {
+  0%{
+    opacity: 0;
+    
+  }
+  100%{
+    opacity: 1;
+    
+  }
+}

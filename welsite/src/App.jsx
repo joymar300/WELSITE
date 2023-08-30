@@ -11,7 +11,7 @@ import Creadores from './layout/Creadores/Creadores';
 import Contenido3 from './layout/Contenido3/Contenido3';
 import Contenido4 from './layout/Contenido4/Contenido4';
 import Register from './layout/Register/Register';
-import Contenido from './layout/Continentes/continentes';
+import Contenido from './layout/Contenido3/Continentes/continentes';
 import Contenidogrado3 from './layout/contenidogrado3/contenidogrado3';
 import { SliderHome } from './components/SliderHome/SliderHome';
 import DetalleContenido from './components/Detallecard/detallecard';

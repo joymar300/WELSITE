@@ -2,27 +2,38 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './DetalleContenido.module.css';
+import BotonAtras from '../ButtonBack/ButtonBack';
 
 const DetalleContenido = () => {
   const location = useLocation();
   const { card } = location.state;
 
   return (
-    <div className={styles.container}>
-    <div className={styles.detailContainer}>
-      <div className={styles.textContainer}>
-        <h2 className={styles.title}>{card.title}</h2>
-        <p className={styles.text}>
-            {card.text.split('\n').map((paragraph, index) => (
-              <React.Fragment key={index}>
-                {paragraph}
-                <br />
-              </React.Fragment>
-            ))}
-          </p>
+    <div>
+      <div className={styles.inicio}  style={{ backgroundColor: card.color }}>
+        <div className={styles.titulo} > 
+          <h2>{card.title}</h2>
+        </div>
       </div>
-      <img src={card.imageSrc} alt={card.title} className={styles.image} />
-    </div>
+      <div className={styles.container}>
+        <div className={styles.detailContainer} >
+          <div className={styles.textContainer}>
+           
+            <p className={styles.text}>
+              {card.text.split('\n').map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  {paragraph}
+                  <br />
+                </React.Fragment>
+              ))}
+            </p>
+          </div>
+          <img src={card.imageSrc} alt={card.title} className={styles.image} />
+        </div>
+      </div>
+      
+      <BotonAtras/>
+      
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .inicio{
-  background-image: url('../../assets/img/5739470.jpg'); 
+  background-image: url('../../assets/img/5739470.webp'); 
   background-position: center;
 background-size: cover;
   background-repeat: no-repeat;
@@ -9,6 +9,17 @@ background-size: cover;
     --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
   -webkit-mask: var(--mask-2);
   mask: var(--mask-2);
+  animation: prueba 1s ease-in-out;
+  }
+  @keyframes prueba  {
+    0%{
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
   .inicio .titulo{
     display: flex;
@@ -34,6 +45,7 @@ background-size: cover;
     gap: 10px 60px;
     margin: 50px auto; /* Centrar verticalmente y centrar horizontalmente */
     justify-content: center; /* Centrar horizontalmente */
+    animation: prueba 1s ease-in-out;
   }
 h2 {
   margin-top: 0;
@@ -154,7 +166,7 @@ a.btn:hover{
   position: relative;
   width: auto;
   height: 250px;
-  background-image: url('../../assets/images/fondocard2.png'); 
+  background-image: url('../../assets/images/fondocard2.webp'); 
   background-position: center;
 background-size: cover;
   background-repeat: no-repeat;
@@ -172,7 +184,7 @@ background-size: cover;
   position: relative;
   width: auto;
   height: 250px;
-  background-image: url('../../assets/images/fondocard3.png'); 
+  background-image: url('../../assets/images/fondocard3.webp'); 
   background-position: center;
 background-size: cover;
   background-repeat: no-repeat;

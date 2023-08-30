@@ -1,0 +1,95 @@
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 70px;
+    right: 40px;
+    background-color: #0099ff;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    transition: all 500ms ease-in-out;
+  }
+  .float:hover{
+    background-color: #1a4f8b;
+  }
+  
+  
+  .myfloat {
+    font-size: 35px;
+    margin: 12px;
+  }
+  .formModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Asegura que el modal esté en frente de otros elementos */
+  }
+  
+  .formModal {
+    max-height: 80vh;
+    overflow-y: auto;
+    max-width: 80vw;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .formModalContent {
+    padding: 20px;
+  }
+  
+  .formModalContent h2 {
+    margin-bottom: 10px;
+  }
+  
+  .formModalContent label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .formModalContent input,
+  .formModalContent textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .formModalContent button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ca3838;
+    color: white;
+    font-weight: bold;
+    transition: all 500ms ease-in-out;
+  }
+  
+  .formModalContent button:last-child {
+    margin-left: 10px;
+    background-color: #0099ff;
+    color: white;
+    transition: all 500ms ease-in-out;
+  }
+  .formModalContent button:hover{
+    background-color: #8b1a1a;
+  
+  }
+  
+  .formModalContent button:last-child:hover {
+    background-color: #1a4f8b;
+  }

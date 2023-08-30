@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import Logo from '../../assets/img/gato.svg';
+import Logo from '../../assets/img/gato.webp';
 import styles from "./SliderHome.module.css"
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './styles.css'
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"
-import dino from '../../assets/img/Dinosaurio.png';
+import dino from '../../assets/img/Dinosaurio.webp';
 export const  SliderHome = () =>{
   const items = [
     {

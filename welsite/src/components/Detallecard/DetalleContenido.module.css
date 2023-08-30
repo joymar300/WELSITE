@@ -1,41 +1,102 @@
 /* DetalleContenido.module.css */
-
-.container {
+.inicio{
+  
+    margin-top: 80px;
+    width: 100%;
+    height: 350px;
+    --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  -webkit-mask: var(--mask-2);
+  mask: var(--mask-2);
+  animation: prueba 1s ease-in-out;
+  }
+  .inicio .titulo{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    margin-top: 100px;
-  }
-  
-  .detailContainer {
-    width: 60vw;
-    height: 850px;
-    margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    font-weight: bold;
+    width: 100%;
+    height: 100%;
+   
     text-align: center;
-    font-size: 34px;
-    margin-bottom: 10px;
   }
-  
+  .inicio .titulo h2{
+    padding: 10px;
+    
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 15px;
+  }
+  @keyframes prueba  {
+    0%{
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+/* Estilos para pantallas mayores a 768px */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 30px;
+  animation: prueba 1s ease-in-out;
+}
+
+.detailContainer {
+  width: 60vw;
+  height: 850px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.image {
+  max-width: 40%;
+  height: 330px;
+  border-radius: 4px;
+  margin-left: 20px;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 20px;
+}
+
+/* Estilos para pantallas menores o iguales a 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin-top: 90px;
+  }
+
+  .detailContainer {
+    width: 90vw;
+    height: auto;
+  }
+
   .image {
-    max-width: 40%;
-    height: 330px; /* Ajusta el tamaño de la imagen */
-    border-radius: 4px;
-    margin-left: 20px; /* Ajusta el espacio entre la imagen y el texto */
-    flex-shrink: 0; /* Evita que la imagen se reduzca */
+    max-width: 100%;
+    height: auto;
+    margin-left: 0;
+    margin-bottom: 20px;
   }
-  
+
   .text {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0 20px; /* Agrega espacio a ambos lados del texto */
+    margin: 0;
   }
-  
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Style from  './stylemap.module.css'; // Importa el archivo de estilos
+import styles from  './stylemap.module.css'; // Importa el archivo de estilos
 
 import Map2 from './countrymap';
 // import mapdata from './mapdata.js'; // Importa los datos del mapa
@@ -13,7 +13,7 @@ function Mapa() {
   return (
     <>
 
-    <div>
+    <div className={styles.map}>
 
       {/* <h1>Mapa Interactivo de Colombia</h1>
       <ComposableMap projection="geoMercator" projectionConfig={{ scale: 100 }}>

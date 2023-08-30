@@ -30,24 +30,27 @@ background-size: cover;
   
   /* Contenedor de tarjetas */
   .cardContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
-    gap: 25px 10px;
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to a new line */
+    justify-content: center; /* Center-align cards horizontally */
+    gap: 25px;
     /*  */ /* Puedes eliminar esta línea */
   }
   
   
   .card {
-    background-color: #fff;
-    padding: 20px;
-    margin: 10px;
-    max-width: 300px;
-    text-align: center;
-    flex: 1 1 calc(33.33% - 20px);
+    flex: 1 1 calc(25% - 2rem); /* Adjust card width based on the desired number of cards in a row */
+    max-width: calc(25% - 2rem); /* Set max width for individual card */
+    width: 18rem;
+    margin: 1rem;
+    height: 15rem;
+    transition: 0.5s;
     overflow: hidden;
-    border-radius: 5px;
-    transition: all 1s ease-in-out;
+    position: relative;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px 0px rgb(206 206 206 / 80%);
+    animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   }
   
   .card img {
