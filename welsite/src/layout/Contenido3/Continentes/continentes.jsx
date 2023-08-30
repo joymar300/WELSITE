@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './continentes.module.css';
 import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
 import Card from '../../../components/Cards/card';
 import BotonAtras from '../../../components/ButtonBack/ButtonBack';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
+import { onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
+import { auth, db, storage } from '../../../config/firebase'
+
+
 
 const cardsData = [
     {
