@@ -48,7 +48,7 @@
 
 .detailContainer {
   width: 60vw;
-  height: 850px;
+  height:auto;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 8px;
