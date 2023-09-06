@@ -17,6 +17,7 @@ const DetalleContenido = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.detailContainer} >
+          <img src={card.imgUrl} alt={card.title} className={styles.image} />
           <div className={styles.textContainer}>
            
             <p className={styles.text}>
@@ -28,7 +29,6 @@ const DetalleContenido = () => {
               ))}
             </p>
           </div>
-          <img src={card.imgUrl} alt={card.title} className={styles.image} />
         </div>
       </div>
       
