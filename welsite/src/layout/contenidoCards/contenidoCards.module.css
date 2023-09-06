@@ -1,0 +1,308 @@
+
+.inicio{
+    background-image: url('../../../assets/images/20415.webp'); 
+    background-position: center;
+    background-size: cover;
+      margin-top: 80px;
+      width: 100%;
+      height: 250px;
+      animation: prueba 1s ease-in-out;
+      --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+      -webkit-mask: var(--mask-2);
+      mask: var(--mask-2);
+      
+    }
+    @keyframes prueba  {
+      0%{
+        opacity: 0;
+        transform: translateY(-200px);
+      }
+      100%{
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+    
+    .inicio .titulo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.589);
+      text-align: center;
+    }
+    .inicio .titulo h2{
+      padding: 10px;
+    background-color: #00b7ff;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 15px;
+    }
+  /* Contenedor padre */
+ 
+  
+  /* Contenedor de tarjetas */
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to a new line */
+    justify-content: center; /* Center-align cards horizontally */
+    gap: 25px;
+  }
+  
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    
+    
+  }
+  @keyframes show{
+    from {
+      opacity: 0;
+      scale: 25%;
+    }
+    to{
+      opacity: 1;
+      scale: 100%;
+    }
+  }
+  
+  
+  
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    display: flex;
+    max-height: 70vh;
+    overflow-y: auto;
+    max-width: 80vw;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modalImage {
+    max-width: 40%;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .modalImage img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .modalContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-top: 20px;
+    position: relative;
+  }
+  
+  .modalContent h2,
+  .modalContent p {
+    text-align: left;
+  }
+  
+  .modalContent button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .buttonPosition{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 768px) {
+    .cardContainer {
+      grid-template-columns: 1fr;
+      
+    }
+    .card {
+      flex: 1 1 100%;
+      max-width: none;
+    }
+    .inicio{
+      background: #00b7ff;
+    }
+    .inicio .titulo{
+      background: #00b7ff;
+    }
+  
+    .modal {
+      max-width: 90vw;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .modalImage {
+      max-width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .modalContent {
+      padding-left: 0;
+      padding-top: 0;
+      text-align: left;
+    }
+  
+    .modalContent button {
+      position: absolute;
+      top: -11px;
+      right: -22px;
+      width: 60px;
+      padding: 5px;
+      border: none;
+      cursor: pointer;
+      z-index: 999;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 70px;
+    right: 40px;
+    background-color: #0099ff;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    transition: all 500ms ease-in-out;
+  }
+  .float:hover{
+    background-color: #1a4f8b;
+  }
+  
+  
+  .myfloat {
+    font-size: 35px;
+    margin: 12px;
+  }
+  .formModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Asegura que el modal esté en frente de otros elementos */
+  }
+  
+  .formModal {
+    max-height: 80vh;
+    overflow-y: auto;
+    max-width: 80vw;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .formModalContent {
+    padding: 20px;
+  }
+  
+  .formModalContent h2 {
+    margin-bottom: 10px;
+  }
+  
+  .formModalContent label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .formModalContent input,
+  .formModalContent textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .formModalContent button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ca3838;
+    color: white;
+    font-weight: bold;
+    transition: all 500ms ease-in-out;
+  }
+  
+  .formModalContent button:last-child {
+    margin-left: 10px;
+    background-color: #0099ff;
+    color: white;
+    transition: all 500ms ease-in-out;
+  }
+  .formModalContent button:hover{
+    background-color: #8b1a1a;
+  
+  }
+  
+  .formModalContent button:last-child:hover {
+    background-color: #1a4f8b;
+  }
+  @media (max-width: 1400px) {
+    /* Updated styles for smaller screens */
+    .cardContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    .inicio{
+      background-color: #0099ff;
+    }
+    /* ... other styles for modals and other elements ... */
+}
+
+  
+  

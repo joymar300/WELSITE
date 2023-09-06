@@ -1,12 +1,27 @@
 .inicio{
-  background-image: url('https://img.freepik.com/vector-gratis/esqueleto-dinosaurio-museo-historia_107791-3643.jpg?w=1380&t=st=1691711216~exp=1691711816~hmac=2da8af1849fd6e0fcac5ab339eb770ab13a9af58d789a278fca4e2537ec09000'); 
+  background-image: url('https://img.freepik.com/vector-gratis/parque-infantil-parque-arco-iris-cielo-escena-panoramica-estilo-dibujos-animados-dia_1308-52695.jpg?w=1380&t=st=1691723684~exp=1691724284~hmac=856d25e30c1c7d679fb53b0cd7dfca08b9f3fa81a1e07c179761efbfcf6d5b23'); 
   background-position: center;
 background-size: cover;
   background-repeat: no-repeat;
     margin-top: 80px;
     width: 100%;
-    height: 250px;
+    height: 350px;
+    --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+-webkit-mask: var(--mask-2);
+mask: var(--mask-2);
+animation: prueba 1s ease-in-out;
   }
+  @keyframes prueba  {
+    0%{
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
   .inicio .titulo{
     display: flex;
     justify-content: center;
@@ -17,285 +32,245 @@ background-size: cover;
     text-align: center;
   }
   .inicio .titulo h2{
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
+    padding: 10px;
+  background-color: #586cda;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 15px;
   }
-/* Contenedor padre */
 .container {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */ /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  animation: prueba 1s ease-in-out;
+  margin-top: 50px; /* Ajusta este valor según tu preferencia */
+}
+h2 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #333;
+}
+.tarjeta {
+  
+  view-timeline-name:--revealing-image;
+animation-name: show;
+animation-fill-mode: both;
+animation-timeline: --revealing-image;
+animation-range:entry 25% cover 30%;
+  max-width:52vw;
+  margin: 43px auto;
+  display: block;
+  border-radius: 20px;
+  /* border: 1px solid black; */
+  overflow: hidden;
+  box-shadow:  17px 17px 76px #6d7d78,
+           -17px -17px 76px #ffffff;
+}
+@keyframes show{
+  from {
+    opacity: 0;
+    scale: 15%;
   }
-  
-  /* Contenedor de tarjetas */
-  .cardContainer {
-    display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to a new line */
-    justify-content: center; /* Center-align cards horizontally */
-    gap: 25px;
-    /*  */ /* Puedes eliminar esta línea */
+  to{
+    opacity: 1;
+    scale: 100%;
   }
-  
-  
-  .card {
-    flex: 1 1 calc(25% - 2rem); /* Adjust card width based on the desired number of cards in a row */
-    max-width: calc(25% - 2rem); /* Set max width for individual card */
-    width: 18rem;
-    margin: 1rem;
-    height: 15rem;
-    transition: 0.5s;
-    overflow: hidden;
-    position: relative;
-    border-radius: 1rem;
-    background-color: #fff;
-    box-shadow: 0px 0px 8px 0px rgb(206 206 206 / 80%);
-    animation: navbar 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.contenido {
+  display: flex;
+}
+@media (max-width: 1024px){
+  .contenido{
+  flex-direction: column;
   }
-  
-  .card img {
-    border-radius: 5px;
-    width: 150px;
-    height: 150px;
+  .tarjeta {
+   max-width: 95vw;
   }
-  
-  .card .buttoncard {
-    padding: 10px 27px;
-    font-size: 14px;
-    font-weight: bold;
-    background-color: #0099ff;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    transition: all 500ms ease-in-out;
-  }
-  
-  .card .buttoncard:hover {
-    background-color: #1a4f8b;
-  }
-  
-  .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+}
+.ladoIzq, .ladoDer {
+  width: 100%;
+}
+
+.ladoDer img {
+  width: 100%;
+  border-style: none;
+}
+.ladoIzq {
+  background-image: url('../../assets/images/tp244-bg4-04.webp'); 
+  background-position: center;
+background-size: cover;
+  background-repeat: no-repeat;
+  color: #333;
+  padding: 48px
+}
+.btn {
+  display: inline-block;
+  background: white;
+  margin-right: 4px;
+  padding: 14px;
+  border-radius: 5px;
+  margin-top: 18px;
+  font-weight: bold;
+}
+a.btn{
+   text-decoration: none;
+}
+a.btn:first-of-type {
+   background: #0099ff;
+   color: white;
+   transition: all 500ms ease-in-out;
+}
+a.btn:hover{
+  background-color: #1a4f8b;
+}
+.titulocard{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  gap: 10px;
+}
+.titulocard img{
+  width: 30px;
+}
+.titulo{
+  font-weight: bold;
+}
+.inicio{
+  background-image: url('https://img.freepik.com/vector-gratis/parque-infantil-parque-arco-iris-cielo-escena-panoramica-estilo-dibujos-animados-dia_1308-52695.jpg?w=1380&t=st=1691723684~exp=1691724284~hmac=856d25e30c1c7d679fb53b0cd7dfca08b9f3fa81a1e07c179761efbfcf6d5b23'); 
+  background-position: center;
+background-size: cover;
+  background-repeat: no-repeat;
+    margin-top: 80px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 350px;
+    --mask-2: radial-gradient(38.42px at 50% calc(100% - 54.00px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%, radial-gradient(38.42px at 50% calc(100% + 24.00px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+-webkit-mask: var(--mask-2);
+mask: var(--mask-2);
+animation: prueba 1s ease-in-out;
   }
-  
-  .modal {
-    display: flex;
-    max-height: 70vh;
-    overflow-y: auto;
-    max-width: 80vw;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: white;
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  .modalImage {
-    max-width: 40%;
-    overflow: hidden;
-    margin-right: 20px;
-  }
-  
-  .modalImage img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .modalContent {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    padding-top: 20px;
-    position: relative;
-  }
-  
-  .modalContent h2,
-  .modalContent p {
-    text-align: left;
-  }
-h2{
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .modalContent button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 60px;
-    padding: 5px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  @media (max-width: 768px) {
-    .cardContainer {
-      grid-template-columns: 1fr;
-    }
-    .card {
-      flex: 1 1 100%;
-      max-width: none;
-    }
-  
-    .modal {
-      max-width: 90vw;
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  
-    .modalImage {
-      max-width: 100%;
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
-  
-    .modalContent {
-      padding-left: 0;
-      padding-top: 0;
-      text-align: left;
-    }
-  
-    .modalContent button {
-      position: absolute;
-      top: -11px;
-      right: -22px;
-      width: 60px;
-      padding: 5px;
-      border: none;
-      cursor: pointer;
-      z-index: 999;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
+  @keyframes prueba  {
+    0%{
       opacity: 0;
-      transform: translateY(-20%);
+      transform: translateY(-200px);
     }
-    to {
+    100%{
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0px);
     }
   }
   
-  .float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 70px;
-    right: 40px;
-    background-color: #0099ff;
-    color: #fff;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    transition: all 500ms ease-in-out;
-  }
-  .float:hover{
-    background-color: #1a4f8b;
-  }
-  
-  
-  .myfloat {
-    font-size: 35px;
-    margin: 12px;
-  }
-  .formModalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .inicio .titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999; /* Asegura que el modal esté en frente de otros elementos */
+    background-color: rgba(0, 0, 0, 0.589);
+    text-align: center;
   }
+  .inicio .titulo h2{
+    padding: 10px;
+  background-color: #586cda;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 15px;
+  }
+.container {
+  animation: prueba 1s ease-in-out;
+  margin-top: 50px; /* Ajusta este valor según tu preferencia */
+}
+h2 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #333;
+}
+.tarjeta {
   
-  .formModal {
-    max-height: 80vh;
-    overflow-y: auto;
-    max-width: 80vw;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: white;
-    animation: fadeIn 0.3s ease-in-out;
+  view-timeline-name:--revealing-image;
+animation-name: show;
+animation-fill-mode: both;
+animation-timeline: --revealing-image;
+animation-range:entry 25% cover 30%;
+  max-width:52vw;
+  margin: 43px auto;
+  display: block;
+  border-radius: 20px;
+  /* border: 1px solid black; */
+  overflow: hidden;
+  box-shadow:  17px 17px 76px #6d7d78,
+           -17px -17px 76px #ffffff;
+}
+@keyframes show{
+  from {
+    opacity: 0;
+    scale: 15%;
   }
-  
-  .formModalContent {
-    padding: 20px;
+  to{
+    opacity: 1;
+    scale: 100%;
   }
-  
-  .formModalContent h2 {
-    margin-bottom: 10px;
+}
+.contenido {
+  display: flex;
+}
+@media (max-width: 1024px){
+  .contenido{
+  flex-direction: column;
   }
-  
-  .formModalContent label {
-    display: block;
-    margin-top: 10px;
+  .tarjeta {
+   max-width: 95vw;
   }
-  
-  .formModalContent input,
-  .formModalContent textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .formModalContent button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #ca3838;
-    color: white;
-    font-weight: bold;
-    transition: all 500ms ease-in-out;
-  }
-  
-  .formModalContent button:last-child {
-    margin-left: 10px;
-    background-color: #0099ff;
-    color: white;
-    transition: all 500ms ease-in-out;
-  }
-  .formModalContent button:hover{
-    background-color: #8b1a1a;
-  
-  }
-  
-  .formModalContent button:last-child:hover {
-    background-color: #1a4f8b;
-  }
-  
-  .buttoncardDelete {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    
-    padding: 10px 27px;
-    font-size: 13px;
-    font-weight: bold;
-    background-color: #d40707;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    transition: all 500ms ease-in-out;
-  }
+}
+.ladoIzq, .ladoDer {
+  width: 100%;
+}
+
+.ladoDer img {
+  width: 100%;
+  border-style: none;
+}
+.ladoIzq {
+  background-image: url('../../assets/images/tp244-bg4-04.webp'); 
+  background-position: center;
+background-size: cover;
+  background-repeat: no-repeat;
+  color: #333;
+  padding: 48px
+}
+.btn {
+  display: inline-block;
+  background: white;
+  margin-right: 4px;
+  padding: 14px;
+  border-radius: 5px;
+  margin-top: 18px;
+  font-weight: bold;
+}
+a.btn{
+   text-decoration: none;
+}
+a.btn:first-of-type {
+   background: #0099ff;
+   color: white;
+   transition: all 500ms ease-in-out;
+}
+a.btn:hover{
+  background-color: #1a4f8b;
+}
+.titulocard{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  gap: 10px;
+}
+.titulocard img{
+  width: 30px;
+}
+.titulo{
+  font-weight: bold;
+}

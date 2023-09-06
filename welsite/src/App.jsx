@@ -18,6 +18,7 @@ import DetalleContenido from './components/Detallecard/detallecard';
 
 import Mapa from './layout/mapa/mapa';
 import Navbar from './components/Navbar/Navbar';
+import ContenidoCards from './layout/contenidoCards/ContenidoCards';
 
 function App() {
 
@@ -37,12 +38,13 @@ function App() {
             <Route path="*" element={<Error404 />} />
             <Route path='/creadores' element={<Creadores/>} />
             <Route path="/clases/contenido3" element={<Contenidogrado3/>} />
-            <Route path='/contenido4' element={<Contenido4/>}/>
+            <Route path='/clases/contenido4' element={<Contenido4/>}/>
             <Route path="/register" element={<Register />} />
             <Route path="/clases/contenido3/continentes" element={<Contenido />} />
             <Route path="/juegos" element={<Juegos />} />
             <Route path="/SliderHome" element={<SliderHome />} />
             <Route path="/clases/contenido/:index" element={<DetalleContenido />} />
+            <Route path='/clases/tipocontendio/:contenido/:title' element={<ContenidoCards/>} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>

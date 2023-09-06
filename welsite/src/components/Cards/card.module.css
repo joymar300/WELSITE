@@ -1,7 +1,7 @@
 .card {
-    flex: 1 1 calc(25% - 2rem); /* Adjust card width based on the desired number of cards in a row */
-    max-width: calc(25% - 2rem); /* Set max width for individual card */
-    width: 18rem;
+    flex: 1 1 calc(20% - 2rem); /* Adjust card width based on the desired number of cards in a row */
+    max-width: calc(20% - 2rem); /* Set max width for individual card */
+    width: 90rem;
     margin: 1rem;
     height: 15rem;
     transition: 0.5s;
@@ -87,6 +87,7 @@
     .card {
         flex: 1 1 calc(33.33% - 2rem); /* Adjust card width for 3 cards in a row */
         max-width: calc(33.33% - 2rem);
+        width:  18rem;
     }
   }
   

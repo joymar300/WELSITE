@@ -4,9 +4,10 @@ import {GrClose} from 'react-icons/gr'
 import {AiOutlinePlus} from 'react-icons/ai'
 import {BiSolidTrash} from 'react-icons/bi'
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../config/firebase';
+import { auth, db } from '../../config/firebase';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import { addDoc, collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
 const Juegos = () => {
     const [showFormModal, setShowFormModal] = useState(false);
     const [newCardData, setNewCardData] = useState({
@@ -63,7 +64,7 @@ const Juegos = () => {
       const newCard = { ...newCardData };
       setCardsData([...cardsData, newCard]);
       setNewCardData({
-        imageSrc: '',
+      
         title: '',
         link: '',
       });
@@ -115,22 +116,16 @@ const Juegos = () => {
         },
       });
       loadingAlert.fire();
-      const docRef = await addDoc(collection(db, "contenido4"), {
-        imgUrl:'',
+      const docRef = await addDoc(collection(db, "juegos"), {
         title: newCardData.title,
-        text: newCardData.text,
+        link: newCardData.link,
       });
 
-      const folder =  ref(storage,`contenido4/${docRef.id}`)
-      await uploadBytes(folder,newCardData.imageSrc);
-      const link = await getDownloadURL(folder)
-      await updateDoc(doc(db, "contenido4", docRef.id), {
-        imgUrl: link
-      })
+   
       await traerContenido()
       toggleFormModal()
       setNewCardData({
-        imageSrc: '',
+     
         title: '',
         text: '',
       });
@@ -159,7 +154,7 @@ const Juegos = () => {
   async function traerContenido() {
     
   const info = []
-    const dataRef = collection(db,"contenido4");
+    const dataRef = collection(db,"juegos");
     const q = query(dataRef);
     const queySnapshot = await getDocs(q);
     queySnapshot.forEach((doc)=>{
@@ -191,16 +186,7 @@ const Juegos = () => {
           showConfirmButton: false,
           allowOutsideClick: false,
         });
-        await deleteDoc(doc(db,"contenido4", docId ),)
-        const borrarimg = ref(storage, imgId)
-        deleteObject(borrarimg).then(()=>{
-          console.log("imagen borrada");
-          
-        }).catch((err)=>{
-          console.log("error al borrar imagen" + err);
-          
-        })
-    
+        await deleteDoc(doc(db,"juegos", docId ))
         await traerContenido()
         Swal.fire({
           title: 'Eliminación exitosa',
@@ -240,7 +226,7 @@ const Juegos = () => {
       <div className={styles.container}>
         
         <div className={styles.cardContainer}>
-          {cardsData.map((card, index) => (
+          {data.map((card, index) => (
             <div className={styles.body} key={index}>
               <a
                 className={`${styles.card} ${styles.credentialing}`}
@@ -256,7 +242,7 @@ const Juegos = () => {
               </a>
               {
                 user ? 
-                <button className={styles.buttoncardDelete} onClick={() => deleteCard(index)}>
+                <button className={styles.buttoncardDelete} onClick={()=>borrarContenido(card.id)}>
                   Eliminar
                 </button>
                 
@@ -304,7 +290,7 @@ const Juegos = () => {
                 <button type="button" onClick={toggleFormModal}>
                   Cancelar
                 </button>
-                <button type="submit">Guardar</button>
+                <button onClick={crearcontenido}>Guardar</button>
               </form>
             </div>
           </div>

@@ -31,7 +31,7 @@ const ClasesComponent = () => {
     <div className={styles.card}>
   <h3 className={styles.heading}>Contenido 4 </h3>
   <div className={styles.overlay}></div>
-  <NavLink className={styles.cardbtn} to="/contenido4"> {/* Usa Link en lugar de <a> */}
+  <NavLink className={styles.cardbtn} to="/clases/contenido4"> {/* Usa Link en lugar de <a> */}
             Acceder al Contenido
             </NavLink>
 </div>

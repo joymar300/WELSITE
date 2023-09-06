@@ -8,6 +8,7 @@ import { QuerySnapshot, addDoc, collection, deleteDoc, doc, getDocs, query, upda
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { onAuthStateChanged } from 'firebase/auth';
+import AgregarCont from '../../components/aregar contenido/agregarCont';
 
 const cardsData = [
     {
@@ -240,6 +241,7 @@ const cardsData = [
   return (
     <div className={styles.container}>
     <div className={styles.cardContainer}>
+      <AgregarCont/>
       {/* {cardsData.map((card, index) => (
         <div key={index} className={styles.card}>
           <img src={card.imageSrc} alt={card.title} />

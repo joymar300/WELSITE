@@ -1,84 +1,117 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './contenidogrado3.module.css'; // Importa los estilos del módulo CSS
 
 import { Link } from 'react-router-dom';
 import BotonAtras from '../../components/ButtonBack/ButtonBack';
+import AgregarCont from '../../components/aregar contenido/agregarCont';
+import { auth, db } from '../../config/firebase';
+import { collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
+import TarjetTheme from '../../components/tarjetas temas/targetTheme';
+import Swal from 'sweetalert2';
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 const Contenidogrado3 = () => {
+  const [data, setData] = useState([]);
+  const [user, setUser] = useState("");
+  useEffect(()=>{
+    traerContenido()
+    onAuthStateChanged(auth, verificarUser)
+  }, [])
+
+  function verificarUser (user){
+    if (user) {
+    setUser(user.email)
+    console.log(user.email)
+    
+    
+  }else{
+    setUser("")
+    console.log("no hay nadie registrado")
+  }
+  
+}
+  async function traerContenido() {
+    
+    const info = []
+      const dataRef = collection(db,"contenido3");
+      const q = query(dataRef);
+      const queySnapshot = await getDocs(q);
+      queySnapshot.forEach((doc)=>{
+         info.push({ id: doc.id, ...doc.data() });
+       });
+      
+      console.log(data)
+      setData(info);
+    }
+
+
+    const borrarContenido = async(docId)=>{
+      try{
+        const result = await Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'Esta acción eliminará el contenido permanentemente.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar',
+          customClass: {
+            confirmButton: styles.confirmButton, // Asigna la clase de estilo definida en contenido3.module.css
+          },
+        });
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Eliminando contenido',
+            text: 'Procesando la eliminación...',
+            icon: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+          });
+          await deleteDoc(doc(db,"contenido3", docId ),)
+    
+         
+      
+          await traerContenido()
+          Swal.fire({
+            title: 'Eliminación exitosa',
+            text: 'El contenido ha sido eliminado con éxito.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        }
+    
+      } catch(err){
+        console.error('Error al eliminar contenido:', err);
+        Swal.fire({
+          title: 'Error al eliminar contenido',
+          text: 'Ha ocurrido un error al eliminar el contenido.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+        });
+      }
+    }
   return (
     <div>
-    <div className={styles.inicio}>
+      <div className={styles.inicio}>
         <div className={styles.titulo}>
         <h2>Elige tu tema </h2>
         </div>
       </div>
-    <div className={styles.container}>
-    <div className={styles.tarjeta}>
-      <div className={styles.contenido}>
-        <div className={styles.ladoIzq}>
-          <div className={styles.titulocard}>
-            <h2 className={styles.titulo}>Los Continentes</h2>
-          </div>
-          <div className={styles.cuerpo}>
-            <p>
-            Los continentes son las grandes extensiones de tierra que cubren nuestro planeta Tierra. Imagina que la Tierra es un enorme rompecabezas y los continentes son las piezas que encajan juntas. Hay siete continentes en total. ¡Vamos a conocerlos!
-            </p>
-            <Link className={styles.btn} to="/clases/contenido3/continentes"> {/* Usa Link en lugar de <a> */}
-            Acceder al Contenido
-            </Link>
-          </div>
-        </div>
-        {/* <div className={styles.ladoDer}>
-          <img src={gato} alt="" srcset="" />
-        </div> */}
+      <div className={styles.container}>
+
+        {data.map((target, index)=>(
+          <TarjetTheme content={target} index={index} key={index} borrarContenido={borrarContenido} grado='contenido3' user={user} />
+        ))}
+  
+        {
+          user != "" ?
+          <AgregarCont tipContent={'contenido3'} traerContenido={traerContenido} />
+
+          :""
+        }
       </div>
-    </div>
-    <div className={styles.tarjeta}>
-      <div className={styles.contenido}>
-        <div className={styles.ladoIzq}>
-          <div className={styles.titulocard}>
-            <h2 className={styles.titulo}>¿Qué son océanos?</h2>
-          </div>
-          <div className={styles.cuerpo}>
-            <p>
-            Los océanos son como enormes lagos de agua salada que cubren gran parte de la Tierra. Imagina que la Tierra es como una gran esfera y los océanos son como charcos de agua gigantes que se extienden por todo su superficie. Hay cinco océanos en total. ¡Vamos a conocerlos!
-            </p>
-            <Link className={styles.btn} to="/contenido4"> {/* Usa Link en lugar de <a> */}
-            Acceder al Contenido
-            </Link>
-          </div>
-        </div>
-        {/* <div className={styles.ladoDer}>
-          <img src={dino} alt="" srcset="" />
-        </div> */}
-        
-      </div>
-    </div>
-    <div className={styles.tarjeta}>
-      <div className={styles.contenido}>
-        <div className={styles.ladoIzq}>
-          <div className={styles.titulocard}>
-            <h2 className={styles.titulo}>¿Qué son océanos?</h2>
-          </div>
-          <div className={styles.cuerpo}>
-            <p>
-            Los océanos son como enormes lagos de agua salada que cubren gran parte de la Tierra. Imagina que la Tierra es como una gran esfera y los océanos son como charcos de agua gigantes que se extienden por todo su superficie. Hay cinco océanos en total. ¡Vamos a conocerlos!
-            </p>
-            <Link className={styles.btn} to="/contenido4"> {/* Usa Link en lugar de <a> */}
-            Acceder al Contenido
-            </Link>
-          </div>
-        </div>
-        {/* <div className={styles.ladoDer}>
-          <img src={dino} alt="" srcset="" />
-        </div> */}
-        
-      </div>
-    </div>
-    
-   
-    </div>
-    <BotonAtras/>
+      <BotonAtras/>
     </div>
   );
 };
