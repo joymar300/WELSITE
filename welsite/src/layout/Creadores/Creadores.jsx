@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './Creadores.module.css'; // Importa los estilos del módulo CSS
 import gato from '../../assets/img/gato.webp'
+import BotonPrender from "../../components/botonoliver/botonOliver";
 
 const Creadores = () => {
     return (
@@ -55,6 +56,7 @@ const Creadores = () => {
                     <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
                     <h3>Veronica</h3>
                     <p>Diseño</p>
+                    <BotonPrender/>
                 </li>
             </ul>
         </section>

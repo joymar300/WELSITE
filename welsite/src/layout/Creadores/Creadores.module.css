@@ -1,5 +1,5 @@
 .inicio{
-  background-image: url('../../assets/img/7798348.png');
+  background-image: url('../../assets/img/7798348.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
   border-radius: 15px;
 }
 .somos{
-  background-color: aqua;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,8 +133,30 @@
     margin-top: 5px;
   }
   @media screen and (max-width: 560px) {
+    .inicio{
+      background-image: url('');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #FF9900;
+      
+    }
+    .inicio .titulo{
+      background-color: #FF9900;
+    }
     .services .cards .card {
       width: 100%;
       margin-bottom: 30px;
+    }
+    .somos{
+      display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     margin-bottom: 150px;
+     margin-top: 150px;
+     padding: 0 10px;
+
     }
   }

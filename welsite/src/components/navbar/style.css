@@ -12,7 +12,7 @@
     border-radius: 6px;
     font-family: inherit;
     font-size: 17px;
-    background: #BED56C;
+    background: #4b9fff;
   }
   
   .dropdown > .content {
@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    color: #333;
+    color: #fff;
  
   }
   
@@ -41,7 +41,7 @@
     transform: scaleX(0);
     background: rgb(255 255 255 / 30%);
     transition: 0.3s;
-    color: #333;
+    color: #fff;
   }
   
   .dropdown:hover > .content::after {
@@ -71,7 +71,7 @@
     left: 50%;
     display: grid;
     width: 110%;
-    padding: 70px 0 6px;
+    padding: 64px 0 6px;
     border-radius: 6px;
     translate: -50% 0;
     visibility: hidden;
@@ -79,27 +79,28 @@
     scale: 0.85;
    background-color: #fff;
     transition: 0.3s;
-    color: #333;
+    color: #fff;
   }
   
   .dropdown:hover > .menu {
     visibility: visible;
     opacity: 1;
     scale: 1;
+    background-color: #4b9fff;
   }
   
   .dropdown > .menu > a {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #333;
+    color: #fff;
     font-size: 14px;
     padding: 0 24px;
     transition: all 0.5s ease-in-out;
   }
   
   .dropdown > .menu > a:nth-child(1):hover {
-    background: rgb(0 0 0 / 10%);
+    background: rgba(22, 214, 96, 0.603);
   }
   .dropdown > .menu > a:nth-child(2):hover {
     background: rgba(199, 25, 25, 0.961);

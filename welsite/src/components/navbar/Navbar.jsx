@@ -151,7 +151,7 @@ const Navbar = () => {
                     <span className="material-symbols-outlined"> <BsPersonAdd/> </span>
                     <NavLink
                     to="/register"
-                    style={{color :'#333' }} > Agregar usuario</NavLink>
+                    style={{color :'#fff' }} > Agregar usuario</NavLink>
                   </a>
                   <a onClick={logOut}>
                     <span className="material-symbols-outlined"> <BiLogOut/> </span>

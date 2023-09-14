@@ -1,4 +1,3 @@
-// DetalleContenido.jsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './DetalleContenido.module.css';
@@ -10,30 +9,25 @@ const DetalleContenido = () => {
 
   return (
     <div>
-      <div className={styles.inicio}  style={{ backgroundColor: card.color }}>
-        <div className={styles.titulo} > 
+      <div className={styles.inicio} style={{ backgroundColor: card.color }}>
+        <div className={styles.titulo}>
           <h2>{card.title}</h2>
         </div>
       </div>
       <div className={styles.container}>
-        <div className={styles.detailContainer} >
+        <div className={styles.detailContainer}>
           <img src={card.imgUrl} alt={card.title} className={styles.image} />
           <div className={styles.textContainer}>
-           
-            <p className={styles.text}>
-              {card.text.split('\n').map((paragraph, index) => (
-                <React.Fragment key={index}>
-                  {paragraph}
-                  <br />
-                </React.Fragment>
-              ))}
-            </p>
+            {/* Muestra el contenido del campo de texto enriquecido */}
+            <div
+              className={styles.text}
+              dangerouslySetInnerHTML={{ __html: card.text }}
+            ></div>
           </div>
         </div>
       </div>
-      
-      <BotonAtras/>
-      
+
+      <BotonAtras />
     </div>
   );
 };
