@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './clases.module.css'; // Importa los estilos del módulo CSS
 import { NavLink, useLocation } from 'react-router-dom'; // Importa useLocation
+import ModalButton from '../../components/modal/modal';
 
 
 const ClasesComponent = () => {
@@ -37,6 +38,7 @@ const ClasesComponent = () => {
 </div>
    
     </div>
+    <ModalButton contentTitle={'Elige tu contenido '}/>
     </div>
   );
 };

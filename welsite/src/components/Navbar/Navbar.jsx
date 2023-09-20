@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import Logo from '../../assets/img/oli.png';
+import Logo from '../../assets/img/mundo.png';
 import styles from './navbar.module.css';
 import { auth, db, userExist } from '../../config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';

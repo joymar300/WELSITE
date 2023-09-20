@@ -225,7 +225,7 @@ const ContenidoCards = () => {
   return (
     <div className={styles.total}>
       {isLoading ? (
-        <Loader />
+        <Loader contentTitle={content.title} />
       ) : (
         <>
           <div className={styles.inicio} style={{ backgroundColor: '#00b7ff' }}>
@@ -330,7 +330,7 @@ const ContenidoCards = () => {
             </div>
           </div>
           <BotonAtras />
-          <ModalButton contentTitle={content.title} />
+          
         </>
       )}
     </div>

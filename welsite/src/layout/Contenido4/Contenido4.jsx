@@ -9,6 +9,7 @@ import { collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
 import TarjetTheme from '../../components/tarjetas temas/targetTheme';
 import Swal from 'sweetalert2';
 import { onAuthStateChanged } from 'firebase/auth';
+import ModalButton from '../../components/modal/modal';
 
 
 const Contenido4 = () => {
@@ -110,6 +111,8 @@ const Contenido4 = () => {
           }
       </div>
       <BotonAtras/>
+      <ModalButton contentTitle={'Elige tu tema de interes'}/>
+
     </div>
   );
 };

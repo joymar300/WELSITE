@@ -8,6 +8,7 @@ import { auth, db } from '../../config/firebase';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { addDoc, collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
+import ModalButton from '../../components/modal/modal';
 const Juegos = () => {
     const [showFormModal, setShowFormModal] = useState(false);
     const [newCardData, setNewCardData] = useState({
@@ -298,6 +299,7 @@ const Juegos = () => {
       )}
     </div>
     </div>
+    <ModalButton contentTitle={'Hoy Vamos A Jugar y Aprender'}/>
     </>
   );
 };
