@@ -245,6 +245,8 @@ const ContenidoCards = () => {
                   activeCardIndex={activeCardIndex}
                   showCardModal={showCardModal}
                   toggleCardModal={toggleCardModal}
+                  tipoContenido={contenido}
+                  idcontenido ={content.id}
                 />
               ))}
 

@@ -100,3 +100,66 @@
     margin: 0;
   }
 }
+
+.float {
+  border: none;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 70px;
+  right: 40px;
+  background-color: #0099ff;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  transition: all 500ms ease-in-out;
+}
+.float:hover{
+  background-color: #1a4f8b;
+}
+.floatsave {
+  border: none;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: #03d67e;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  transition: all 500ms ease-in-out;
+}
+.floatsave:hover{
+  background-color: #1a8b60;
+}
+.floatclose {
+  border: none;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: #ff034f;
+  color: #fff;
+  border-radius: 50px;
+ 
+  box-shadow: 2px 2px 3px #999;
+  transition: all 500ms ease-in-out;
+}
+.floatclose:hover{
+  background-color: #c01649;
+}
+
+
+.myfloat {
+  font-size: 35px;
+  margin: 12px;
+}
+.listButtons{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  bottom: 70px;
+  right: 40px;
+  position: fixed;
+
+}
