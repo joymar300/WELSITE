@@ -32,7 +32,7 @@ const ModalButton = ({ contentTitle }) => {
             </button>
             <img src={oliver} alt="" srcSet="" width={150} />
             <h2>Hola, soy Oliver</h2>
-            <p>{`Hoy vamos a aprender ${contentTitle}`}</p>
+            <p>{`${contentTitle}`}</p>
           </div>
         </div>
       )}

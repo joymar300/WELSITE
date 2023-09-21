@@ -3,6 +3,7 @@ import styles from './Home.module.css';
 import homeLogo from '../../assets/images/planet.webp';
 import { RiArrowDownSFill } from 'react-icons/ri';
 import { SliderHome } from "../../components/SliderHome/SliderHome";
+import ModalButton from "../../components/modal/modal";
 
 const HomeView = () => {
 
@@ -28,6 +29,7 @@ const HomeView = () => {
         {/* Tu componente SliderHome aquí */}
         <SliderHome/>
       </div>
+      <ModalButton contentTitle={'Seré su guia en esta página'}/>
 
      
     </>

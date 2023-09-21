@@ -20,6 +20,9 @@
   padding: 0 30px;
   margin: 0 auto;
 }
+img{
+  padding: 10px;
+}
 .nav_logo img{
   object-fit: cover;
 }

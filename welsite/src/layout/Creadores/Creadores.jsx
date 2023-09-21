@@ -1,7 +1,8 @@
 import React from "react";
 import styles from './Creadores.module.css'; // Importa los estilos del módulo CSS
-import gato from '../../assets/img/gato.webp'
+import gato from '../../assets/img/Oliver3.png'
 import BotonPrender from "../../components/botonoliver/botonOliver";
+import ModalButton from "../../components/modal/modal";
 
 const Creadores = () => {
     return (
@@ -9,12 +10,11 @@ const Creadores = () => {
         <div className={styles.inicio}>
                 <div className={styles.titulo}>
                     <h2>Quienes Somos</h2>
-                   
                 </div>
             </div>
             <div className={styles.somos}>
             <div className={styles.img}>
-                <img src={gato} alt="" />
+                <img src={gato} alt=""/>
             </div>
             <div className={styles.text}>
                 <h2>Quienes somos</h2>
@@ -56,10 +56,10 @@ const Creadores = () => {
                     <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
                     <h3>Veronica</h3>
                     <p>Diseño</p>
-                    <BotonPrender/>
                 </li>
             </ul>
         </section>
+        <ModalButton contentTitle={'Estos son mi Creadores'}/>
         </>
     )
 }
