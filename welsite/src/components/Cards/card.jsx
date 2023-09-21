@@ -27,7 +27,7 @@ const Card = ({ card, index, user, borarContent , tipoContenido, idcontenido}) =
         onClick={navigateToDetail}
         style={{ background: card.color, border: `2px solid ${card.color}` }}
       ></div>
-      <div className={styles.content}>
+      <div className={styles.content} onClick={navigateToDetail}>
         <h2>{card.title}</h2>
       </div>
       {user ? (

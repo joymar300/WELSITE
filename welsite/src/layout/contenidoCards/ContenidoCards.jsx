@@ -76,18 +76,18 @@ const ContenidoCards = () => {
       loadingAlert.fire();
       const contRef = doc(db, gradoCont, contentID);
       const docRef = await addDoc(collection(contRef, 'info'), {
-        imgUrl: '',
+        // imgUrl: '',
         title: newCardData.title,
         text: newCardData.text,
         color: newCardData.color,
       });
 
-      const folder = ref(storage, `${gradoCont}/imgCont/${docRef.id}`);
-      await uploadBytes(folder, newCardData.imageSrc);
-      const link = await getDownloadURL(folder);
-      await updateDoc(doc(contRef, 'info', docRef.id), {
-        imgUrl: link,
-      });
+      // const folder = ref(storage, `${gradoCont}/imgCont/${docRef.id}`);
+      // await uploadBytes(folder, newCardData.imageSrc);
+      // const link = await getDownloadURL(folder);
+      // await updateDoc(doc(contRef, 'info', docRef.id), {
+      //   imgUrl: link,
+      // });
       await traerContenido();
       toggleFormModal();
       setNewCardData({
@@ -160,15 +160,15 @@ const ContenidoCards = () => {
         audioBasura.play();
 
         await deleteDoc(doc(db, contenido, content.id, 'info', docId));
-        const borrarimg = ref(storage, imgId);
+        // const borrarimg = ref(storage, imgId);
 
-        deleteObject(borrarimg)
-          .then(() => {
-            console.log('imagen borrada');
-          })
-          .catch((err) => {
-            console.log('error al borrar imagen' + err);
-          });
+        // deleteObject(borrarimg)
+        //   .then(() => {
+        //     console.log('imagen borrada');
+        //   })
+        //   .catch((err) => {
+        //     console.log('error al borrar imagen' + err);
+        //   });
 
         await traerContenido();
         Swal.fire({
@@ -264,7 +264,7 @@ const ContenidoCards = () => {
                     <div className={styles.formModalContent}>
                       <h2>Agregar Contenido</h2>
                       <form onSubmit={handleSubmit}>
-                        <label htmlFor="image">Imagen:</label>
+                        {/* <label htmlFor="image">Imagen:</label>
                         <input
                           type="file"
                           id="image"
@@ -275,7 +275,7 @@ const ContenidoCards = () => {
                               imageSrc: e.target.files[0],
                             })
                           }
-                        />
+                        /> */}
 
                         <label htmlFor="title">Título:</label>
                         <input
