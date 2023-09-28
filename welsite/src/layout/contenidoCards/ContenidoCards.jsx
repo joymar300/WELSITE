@@ -36,7 +36,7 @@ const ContenidoCards = () => {
         // Establece isLoading en false después de 2 segundos (2000 milisegundos)
         setTimeout(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 3000);
       })
       .catch((error) => {
         console.error('Error al cargar contenido:', error);
