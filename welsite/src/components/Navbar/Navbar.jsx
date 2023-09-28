@@ -136,42 +136,49 @@ const Navbar = () => {
            
             <li>
               {
-                user ? (
+                user ? 
+                <>
+                
+                    <div className="dropdown">
+                    <div className="content">
+                      <span className="material-symbols-outlined"> <BsFillPersonFill/> </span>
+                      <p>{username}</p>
+                      <span className="material-symbols-outlined"> <MdKeyboardArrowUp/> </span>
+                    </div>
+                    <button type="button"></button>
+                    <div className="menu">
+                      
+                      <a>
+                        <span className="material-symbols-outlined"> <BsPersonAdd/> </span>
+                        <NavLink
+                        to="/register"
+                        style={{color :'#fff' }} > Agregar usuario</NavLink>
+                      </a>
+                      <a onClick={logOut}>
+                        <span className="material-symbols-outlined"> <BiLogOut/> </span>
+                        <p>
+                            cerrar sesión
+                        </p>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </>
 
-                <div className="dropdown">
-                <div className="content">
-                  <span className="material-symbols-outlined"> <BsFillPersonFill/> </span>
-                  <p>{username}</p>
-                  <span className="material-symbols-outlined"> <MdKeyboardArrowUp/> </span>
-                </div>
-                <button type="button"></button>
-                <div className="menu">
-                  
-                  <a>
-                    <span className="material-symbols-outlined"> <BsPersonAdd/> </span>
-                    <NavLink
-                    to="/register"
-                    style={{color :'#fff' }} > Agregar usuario</NavLink>
-                  </a>
-                  <a onClick={logOut}>
-                    <span className="material-symbols-outlined"> <BiLogOut/> </span>
-                    <p>
-                        cerrar sesión
-                    </p>
-                  </a>
-                  
-                </div>
-              </div>
-                ):(
-                <NavLink
-                  to="/signin"
-                  className={`${styles.button}`}
-                  id="form-open"
-                >
-                  Iniciar Sesion
-                </NavLink>
+                :
+                <>
+                
+                  <NavLink
+                    to="/signin"
+                    className={`${styles.button}`}
+                    id="form-open"
+                  >
+                    Iniciar Sesion
+                  </NavLink>
+                </>
 
-                )
+                
               }
             </li>
            
