@@ -16,7 +16,7 @@ const HomeView = () => {
             <h1 >BIENVENIDOS </h1>
             <h2 >A WELTSITE</h2>
             <p>
-             Somos una página para estudiantes de 3ro y 4to del Colegio San Alberto Magno...
+             Somos una página para estudiantes de 3ro y 4to del Colegio San Alberto Magno.
             </p>
           </div>
           <img className={styles.homeLogo} src={homeLogo} alt="Planet" />
