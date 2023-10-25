@@ -1,27 +1,39 @@
+// ContenidoCards.js
+
 import React, { useEffect, useState } from 'react';
 import styles from './contenidoCards.module.css';
-import 'react-quill/dist/quill.snow.css'; // Importa el estilo del editor
-import ReactQuill from 'react-quill'; // Importa React-Quill
+import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill';
 import { GrClose } from 'react-icons/gr';
 import { AiOutlinePlus } from 'react-icons/ai';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import { onAuthStateChanged } from 'firebase/auth';
-import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+} from 'firebase/firestore';
 import { auth, db, storage } from '../../config/firebase';
-import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 import Card from '../../components/Cards/card';
 import BotonAtras from '../../components/ButtonBack/ButtonBack';
 import { useLocation, useParams } from 'react-router-dom';
-import AgregarCont from '../../components/aregar contenido/agregarCont';
-import ModalButton from '../../components/modal/modal';
 import sonidoBasura from '../../assets/img/basura.mp3';
 import Loader from '../../components/Loader/loader';
-import AgregarCards from '../../components/Agregar cards/agregarcard';
 
 const ContenidoCards = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const audioBasura = new Audio(sonidoBasura); // Sonido al eliminar contenido
+  const audioBasura = new Audio(sonidoBasura);
   const { contenido } = useParams();
   const location = useLocation();
   const { content } = location.state || {};
@@ -33,14 +45,12 @@ const ContenidoCards = () => {
   useEffect(() => {
     traerContenido()
       .then(() => {
-        // Establece isLoading en false después de 2 segundos (2000 milisegundos)
         setTimeout(() => {
           setIsLoading(false);
         }, 3000);
       })
       .catch((error) => {
         console.error('Error al cargar contenido:', error);
-        // También establece isLoading en false después de 2 segundos en caso de error
         setTimeout(() => {
           setIsLoading(false);
         }, 2000);
@@ -70,24 +80,18 @@ const ContenidoCards = () => {
         showConfirmButton: false,
         allowOutsideClick: false,
         didOpen: () => {
-          MySwal.showLoading(); // Muestra el indicador de progreso
+          MySwal.showLoading();
         },
       });
       loadingAlert.fire();
       const contRef = doc(db, gradoCont, contentID);
       const docRef = await addDoc(collection(contRef, 'info'), {
-        // imgUrl: '',
         title: newCardData.title,
         text: newCardData.text,
         color: newCardData.color,
+        videoUrl: newCardData.videoUrl, // Asegúrate de almacenar la URL del video
       });
 
-      // const folder = ref(storage, `${gradoCont}/imgCont/${docRef.id}`);
-      // await uploadBytes(folder, newCardData.imageSrc);
-      // const link = await getDownloadURL(folder);
-      // await updateDoc(doc(contRef, 'info', docRef.id), {
-      //   imgUrl: link,
-      // });
       await traerContenido();
       toggleFormModal();
       setNewCardData({
@@ -95,6 +99,7 @@ const ContenidoCards = () => {
         title: '',
         text: '',
         color: '',
+        videoUrl: '', // Limpia el campo de la URL del video
       });
       MySwal.close();
       Swal.fire({
@@ -156,19 +161,9 @@ const ContenidoCards = () => {
           allowOutsideClick: false,
         });
 
-        // Reproduce el sonido antes de eliminar
         audioBasura.play();
 
         await deleteDoc(doc(db, contenido, content.id, 'info', docId));
-        // const borrarimg = ref(storage, imgId);
-
-        // deleteObject(borrarimg)
-        //   .then(() => {
-        //     console.log('imagen borrada');
-        //   })
-        //   .catch((err) => {
-        //     console.log('error al borrar imagen' + err);
-        //   });
 
         await traerContenido();
         Swal.fire({
@@ -196,8 +191,9 @@ const ContenidoCards = () => {
   const [newCardData, setNewCardData] = useState({
     imageSrc: '',
     title: '',
-    text: '', // Cambia el campo de texto a un componente React-Quill
+    text: '',
     color: '',
+    videoUrl: '', // Nuevo campo para la URL del video
   });
 
   const toggleCardModal = (index) => {
@@ -218,6 +214,7 @@ const ContenidoCards = () => {
       title: '',
       text: '',
       color: '',
+      videoUrl: '', // Limpia el campo de la URL del video
     });
     setShowFormModal(false);
   };
@@ -246,7 +243,7 @@ const ContenidoCards = () => {
                   showCardModal={showCardModal}
                   toggleCardModal={toggleCardModal}
                   tipoContenido={contenido}
-                  idcontenido ={content.id}
+                  idcontenido={content.id}
                 />
               ))}
 
@@ -264,19 +261,6 @@ const ContenidoCards = () => {
                     <div className={styles.formModalContent}>
                       <h2>Agregar Contenido</h2>
                       <form onSubmit={handleSubmit}>
-                        {/* <label htmlFor="image">Imagen:</label>
-                        <input
-                          type="file"
-                          id="image"
-                          accept="image/*"
-                          onChange={(e) =>
-                            setNewCardData({
-                              ...newCardData,
-                              imageSrc: e.target.files[0],
-                            })
-                          }
-                        /> */}
-
                         <label htmlFor="title">Título:</label>
                         <input
                           type="text"
@@ -293,12 +277,14 @@ const ContenidoCards = () => {
                           onChange={(value) => setNewCardData({ ...newCardData, text: value })}
                           modules={{
                             toolbar: [
-                              [{ header: '1' }, { header: '2' }, { font: [] }],
+                              [{ header: '1' }, { header: '2' }],
+                              [{ font: [] }, { size: [] }],
                               [{ list: 'ordered' }, { list: 'bullet' }],
                               ['link', 'image'],
                               ['clean'],
                             ],
                           }}
+                          style={{ fontSize: '16px', fontFamily: 'Arial' }}
                         />
 
                         <label htmlFor="color">Color:</label>
@@ -318,6 +304,16 @@ const ContenidoCards = () => {
                           }}
                         />
 
+                        <label htmlFor="videoUrl">URL del video de YouTube:</label>
+                        <input
+                          type="text"
+                          id="videoUrl"
+                          value={newCardData.videoUrl}
+                          onChange={(e) =>
+                            setNewCardData({ ...newCardData, videoUrl: e.target.value })
+                          }
+                        />
+
                         <button type="button" onClick={toggleFormModal}>
                           Cancelar
                         </button>
@@ -332,7 +328,6 @@ const ContenidoCards = () => {
             </div>
           </div>
           <BotonAtras />
-          
         </>
       )}
     </div>

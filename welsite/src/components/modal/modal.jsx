@@ -8,35 +8,40 @@ import sonidoSalida from '../../assets/img/salida.mp3';
 
 const ModalButton = ({ contentTitle }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [audioEntrada] = useState(new Audio(sonidoEntrada)); // Sonido al abrir el modal
-  const [audioSalida] = useState(new Audio(sonidoSalida)); // Sonido al cerrar el modal
-
+  
   const closeModal = () => {
-    audioSalida.play(); // Reproduce el sonido al cerrar el modal
+     // Reproduce el sonido al cerrar el modal
     setModalIsOpen(false);
   };
 
   useEffect(() => {
     // Abre el modal automáticamente al cargar la página
-    audioEntrada.play(); // Reproduce el sonido al abrir el modal
+    // Reproduce el sonido al abrir el modal
     setModalIsOpen(true);
+
+    // Cierra el modal después de 6 segundos
+    const timeout = setTimeout(() => {
+      closeModal();
+    }, 6000);
+
+    return () => {
+      // Limpia el timeout si el componente se desmonta antes de que se cierre el modal automáticamente
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
-    <div>
-      {modalIsOpen && (
-        <div className="popup-modal">
-          <div className="popup-modal-content">
-            <button onClick={closeModal} className="close-modal-button">
-              X
-            </button>
-            <img src={oliver} alt="" srcSet="" width={150} />
-            <h2>Hola, soy Oliver</h2>
-            <p>{`${contentTitle}`}</p>
+    <>
+      <div>
+        {modalIsOpen && (
+          <div className="notification">
+            <p>Hola, soy Oliver😺{`${contentTitle}`} </p>
+            <span className="notification-progress"></span>
           </div>
-        </div>
-      )}
-    </div>
+         
+        )}
+      </div>
+    </>
   );
 };
 

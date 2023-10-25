@@ -47,7 +47,12 @@
 }
 
 .detailContainer {
-  width: 60vw;
+  overflow:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  width: 80vw;
   height:auto;
   margin-bottom: 30px;
   padding: 20px;

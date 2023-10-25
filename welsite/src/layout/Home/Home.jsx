@@ -26,10 +26,7 @@ const HomeView = () => {
         </div>
       </section>
 
-      <div id="SliderHome" className={styles.SliderHome}>
-        {/* Tu componente SliderHome aquí */}
-        <SliderHome/>
-      </div>
+     
       <DepartmentSlider/>
       <ModalButton contentTitle={'Seré su guia en esta página'}/>
 

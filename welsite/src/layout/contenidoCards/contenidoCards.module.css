@@ -313,3 +313,7 @@
   color: white !important; /* Agrega !important */
   /* Otros estilos con !important según tus preferencias */
 }
+.ql-editor img {
+  max-width: 100%; /* Cambia el tamaño máximo de las imágenes */
+  height: auto; /* Mantiene la proporción de aspecto de las imágenes */
+}
