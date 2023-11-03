@@ -27,6 +27,8 @@ const DetalleContenido = () => {
   const [dbText, setDbText] = useState('');
   const [user, setUser] = useState('');
   const MySwal = withReactContent(Swal);
+  const [urlEdit, setUrlEdit]= useState('');
+  const [urlact, setUrlAct]= useState('');
 
   useEffect(() => {
     mostrartext();
@@ -50,6 +52,9 @@ const DetalleContenido = () => {
   const crossb = () => {
     onAuthStateChanged(auth, verificarUser);
     SetAprobedEdit(false);
+
+    
+
   }
 
   const saveEdit = async () => {
@@ -67,6 +72,8 @@ const DetalleContenido = () => {
       const docref = doc(db, tipoContenido, idcontenido);
       await updateDoc(doc(docref, 'info', card.id), {
         text: dataEdit,
+        videoUrl: urlEdit,
+
       });
       mostrartext();
       SetAprobedEdit(false);
@@ -100,6 +107,8 @@ const DetalleContenido = () => {
     const querySnapshot = await getDoc(docref);
     setDbText(querySnapshot.data().text);
     setDataEdit(querySnapshot.data().text);
+    setUrlAct(querySnapshot.data().videoUrl)
+    setUrlEdit(querySnapshot.data().videoUrl)
     console.log(querySnapshot.data());
   }
 
@@ -113,58 +122,58 @@ const DetalleContenido = () => {
       <div className={styles.container}>
         <div className={styles.detailContainer}>
           <div className={styles.textContainer}>
-          {aprobedEdit ? (
-  <>
-    <form>
-      <ReactQuill
-        value={dataEdit}
-        onChange={(value) => setDataEdit(value)}
-        modules={{
-          toolbar: [
-            [{ header: '1' }, { header: '2' }, { font: [] }],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
-            ['clean'],
-          ],
-        }}
-      />
-    </form>
-    <div className={styles.listButtons}>
-      <div className={styles.urlInput}>
-        <label htmlFor="videoUrl">URL del video de YouTube:</label>
-        <input
-          type="text"
-          id="videoUrl"
-          value={card.videoUrl}
-          onChange={(e) => (card.videoUrl = e.target.value)}
-        />
-      </div>
-      <button onClick={saveEdit} className={styles.floatsave}>
-        <AiFillSave className={styles.myfloat} />
-      </button>
-      <button onClick={crossb} className={styles.floatclose}>
-        <RxCross1 className={styles.myfloat} />
-      </button>
-    </div>
-  </>
-            ) : (
-              <div className={styles.text}>
-  <div
-    dangerouslySetInnerHTML={{ __html: dbText }}
-  ></div>
-  {card.videoUrl && (
-    <div className={styles.videoContainer}>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${extractVideoIdFromUrl(card.videoUrl)}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
-    </div>
-  )}
-</div>
+          {aprobedEdit ? 
+          (
+            <>
+              <form>
+                <ReactQuill
+                  value={dataEdit}
+                  onChange={(value) => setDataEdit(value)}
+                  modules={{
+                    toolbar: [
+                      [{ header: '1' }, { header: '2' }, { font: [] }],
+                      [{ list: 'ordered' }, { list: 'bullet' }],
+                      ['link', 'image'],
+                      ['clean'],
+                    ],
+                  }}
+                />
+              <div className={styles.urlInput}>
+                <label htmlFor="videoUrl">Cambiar URL del video de YouTube:</label>
+                <input
+                  type="text"
+                  id="videoUrl"
+                  value={urlEdit}
+                  onChange={(e) => (setUrlEdit(e.target.value))}
+                />
+              </div>
+              </form>
+              <div className={styles.listButtons}>
+                <button onClick={saveEdit} className={styles.floatsave}>
+                  <AiFillSave className={styles.myfloat} />
+                </button>
+                <button onClick={crossb} className={styles.floatclose}>
+                  <RxCross1 className={styles.myfloat} />
+                </button>
+              </div>
+            </>
+          ) : 
+          (
+            <div className={styles.textContainer} >
+              <div  className={styles.text}
+                dangerouslySetInnerHTML={{ __html: dbText }}
+              ></div>
+              {urlact && (
+                <div className={styles.videoContainer}>
+                  <iframe 
+                    src={`https://www.youtube.com/embed/${extractVideoIdFromUrl(urlact)}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
+            </div>
             )}
           </div>
         </div>
