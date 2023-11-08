@@ -5,20 +5,47 @@
   height: 100vh;
   background-color: white;
   flex-direction: column;
+  row-gap: 20px;
+}
+
+.loader-image {
+  position: relative;
 }
 
 .imgoliver {
+  position: relative; /* Añade posición relativa para que el z-index funcione */
   width: 250px;
-  animation: oliver 3s ease-in-out;
+
+  z-index: 0; /* Asigna un z-index más bajo para la imagen */
 }
 
-/* Agrega estilos para el texto */
-.loadercontent p {
+.cloud-text {
+  position: absolute;
+  top: -90px; /* Ajusta la distancia desde la parte superior según tu diseño */
+  left: 35%;
+  transform: translateX(-50%);
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+  background: white;
+  box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
   font-size: 24px;
-  margin-top: 80px; /* Espacio adicional desde la imagen */
   text-align: center;
-  font-weight: bold; /* Centrar el texto horizontalmente */
-  animation: oliver 3s ease-in-out;
+
+  font-family: 'Pacifico', cursive;
+  color: #303030;
+  z-index: 1; /* Asigna un z-index más alto para el div de texto */
+}
+
+.cloud-text:before {
+  border: 25px solid white;
+  content: '';
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  bottom: -48px; /* Ajusta la distancia desde la parte superior según tu diseño */
+  left: calc(50% - 25px);
 }
 
 @keyframes oliver {
@@ -29,10 +56,59 @@
   50% {
     transform: scale(1.5);
     opacity: 1;
-    filter: drop-shadow(-2px 2px 15px rgba(255, 208, 0, 0.836));
+    filter: drop-shadow(-2px 2px 15px #ff9900bd);
   }
   100% {
     transform: scale(1);
     opacity: 0;
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader__circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 4px;
+ 
+  animation: loader_901 1s ease-in-out infinite;
+}
+
+.loader__circle:nth-of-type(1) {
+  background-color: #007aff;
+  animation-delay: 0;
+}
+
+.loader__circle:nth-of-type(2) {
+  background-color: #ff2d55;
+  animation-delay: 0.25s;
+}
+
+.loader__circle:nth-of-type(3) {
+  background-color: #34c759;
+  animation-delay: 0.5s;
+}
+
+.loader__circle:nth-of-type(4) {
+  background-color: #ff9500;
+  animation-delay: 0.75s;
+}
+
+@keyframes loader_901 {
+  0% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.2);
+  }
+
+  40% {
+    transform: scale(1);
   }
 }

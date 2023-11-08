@@ -7,7 +7,7 @@ const Map2 = () => {
 
   return (
       <>
-      <iframe title='Mapa Welsite' src='https://appraisable-master.000webhostapp.com' width='100%' height='1000px' />
+      <iframe title='Mapa Welsite' src='https://joymar300.github.io/weltsitemap.github.io/' width='100%' height='1000px' />
       </>
   );
 };
