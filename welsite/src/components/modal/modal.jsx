@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ModalButton.css';
+import gato from '../../assets/img/oliver3.webp'
 const ModalButton = ({ contentTitle }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
@@ -21,7 +22,8 @@ const ModalButton = ({ contentTitle }) => {
       <div>
         {modalIsOpen && (
           <div className="notification">
-            <p>Hola, soy Oliver🦊{`${contentTitle}`} </p>
+            <img src={gato}  width={150}></img>
+            <p>Hola, soy Oliver, {`${contentTitle}`} </p>
             <span className="notification-progress"></span>
           </div>
          

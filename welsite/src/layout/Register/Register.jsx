@@ -8,6 +8,8 @@ import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPa
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../config/firebase';
 import { addDoc, collection } from 'firebase/firestore';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
   const Register = () => {
@@ -18,13 +20,24 @@ import { addDoc, collection } from 'firebase/firestore';
     const [mName, setMName]= useState("");
     const [fApellido, setFApellido]= useState("");
     const [sApellido, setSApellido]= useState("");
-
+    const MySwal = withReactContent(Swal)
     const crearUser = async ()=>{
-      try{
+     try{ 
+      const loadingAlert = MySwal.mixin({
+        title: 'Creando contenido',
+        icon: 'info',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          MySwal.showLoading(); // Muestra el indicador de progreso
+        },
+      });
+      loadingAlert.fire();
+
         await createUserWithEmailAndPassword(auth,email,password).then(async(userCredential)=>{
           var user = userCredential.user;
-           try{
-             const docRef = await addDoc(collection(db, "users"), {
+          try{
+            const docRef = await addDoc(collection(db, "users"), {
                 fName: fName,
                 mName: mName,
                 fApellido: fApellido,
@@ -34,17 +47,37 @@ import { addDoc, collection } from 'firebase/firestore';
                 
               });
               console.log("Document written with ID: ", docRef.id);
-              navigate("/");
-
-           }catch(error){
-            console.log(error)
-           }
-
+              
+            }catch(error){
+              console.log(error)
+          }
+          
         });
+        
+        MySwal.close();
+        Swal.fire({
+          title: 'Creación exitosa',
+          text: 'El usuario ha sido creado con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      navigate("/");
+
+    } catch (err){
+      console.log(err)
+      Swal.fire({
+        title: 'Error al crear usuario',
+        text: err,
+        icon: 'error',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+
+
+      
        
-      } catch (err){
-        console.log(err)
-      }
+ 
   
   
     };

@@ -15,6 +15,9 @@
 	visibility: hidden;
 	animation: fade-in 4s linear forwards;
 }
+.notification img{
+	margin-left: 25%;
+}
 .notification-progress {
 	position: absolute;
 	right: 5px;

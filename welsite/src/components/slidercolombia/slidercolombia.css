@@ -307,3 +307,16 @@
 .rotate-animation {
   animation: rotate 2s linear infinite;
 }
+
+  
+@media screen and (max-width: 860px) {
+.size{
+  width: 284px;
+  height: 284px;
+}
+.circle{
+  width: 284px;
+  height: 273px;
+}
+
+}
