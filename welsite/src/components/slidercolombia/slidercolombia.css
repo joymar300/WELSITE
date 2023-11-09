@@ -313,10 +313,13 @@
 .size{
   width: 284px;
   height: 284px;
+  
 }
 .circle{
-  width: 284px;
-  height: 273px;
+  width: 285px;
+  height: 284px;
+  padding: auto;
+ 
 }
 
 }
