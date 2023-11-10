@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import './slidercolombia.css';
 import oliver from '../../assets/img/Oliver3.png';
-
 Modal.setAppElement("#root");
-
 const DepartmentSlider = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showModal, setShowModal] = useState(false);
