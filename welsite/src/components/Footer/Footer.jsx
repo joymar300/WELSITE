@@ -1,5 +1,6 @@
 import React from "react";
-import styles from './Footer.module.css'; // Importa los estilos del módulo CSS
+import styles from './Footer.module.css';
+import Logo from '../../assets/img/LOGOCOLSAM.png'; 
 
 const Footer = () => {
     return (
@@ -8,6 +9,7 @@ const Footer = () => {
         
             <div>
                 <span>Copyright © 2023 All Rights Reserved</span>
+                <img src={Logo} alt="" srcset="" />
             </div>
         </footer>
     )
