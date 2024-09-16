@@ -3,7 +3,12 @@ import styles from './Creadores.module.css'; // Importa los estilos del módulo 
 import gato from '../../assets/img/Oliver3.png'
 import BotonPrender from "../../components/botonoliver/botonOliver";
 import ModalButton from "../../components/modal/modal";
-
+import va from '../../assets/img/va.png'
+import vero from '../../assets/img/vero.png'
+import ka from '../../assets/img/kati.png'
+import isa from '../../assets/img/isabella.png'
+import ale from '../../assets/img/3.png'
+import daniel from '../../assets/img/daniel.png'
 const Creadores = () => {
     return (
         <>
@@ -17,7 +22,7 @@ const Creadores = () => {
                 <img src={gato} alt=""/>
             </div>
             <div className={styles.text}>
-                <h2>Quienes somos</h2>
+                <h2>Quienes Somos</h2>
                         <p>Somos un equipo apasionado y comprometido con la educación en ciencias sociales. Nuestro objetivo es proporcionarte recursos de alta calidad que estimulen tu curiosidad y te inspiren a aprender de manera activa. Valoramos la diversidad y fomentamos el aprendizaje colaborativo. Estamos aquí para apoyarte en tu viaje educativo y ayudarte a desarrollar habilidades en la asignatura. Únete a nosotros en Weltsite y descubre un mundo de conocimiento en nuestra plataforma educativa.</p>
                     </div>
             </div>
@@ -27,33 +32,33 @@ const Creadores = () => {
             {/* <p>Explore our wide range of camping gear services.</p> */}
             <ul className={styles.cards}>
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={va} alt="img" />
                     <h3>Valery</h3>
                     <p>Diseño</p>
                 </li>
                 {/* Repite para otros elementos */}
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={ka} alt="img" />
                     <h3>Kathyana</h3>
                     <p>Diseño</p>
                 </li>
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={daniel} alt="img" />
                     <h3>Daniel</h3>
                     <p>Desarrollador</p>
                 </li>
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={isa} alt="img" />
                     <h3>Isabella</h3>
                     <p>Desarrollador</p>
                 </li>
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={ale} alt="img" />
                     <h3>Alejandra</h3>
                     <p>Desarrollador</p>
                 </li>
                 <li className={styles.card}>
-                    <img src="https://w7.pngwing.com/pngs/442/477/png-transparent-computer-icons-user-profile-avatar-profile-heroes-profile-user.png" alt="img" />
+                    <img src={vero} alt="img" />
                     <h3>Veronica</h3>
                     <p>Diseño</p>
                 </li>

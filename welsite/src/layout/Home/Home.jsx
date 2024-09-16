@@ -4,6 +4,7 @@ import homeLogo from '../../assets/images/planet.webp';
 import { RiArrowDownSFill } from 'react-icons/ri';
 import { SliderHome } from "../../components/SliderHome/SliderHome";
 import ModalButton from "../../components/modal/modal";
+import DepartmentSlider from "../../components/slidercolombia/slidercolombia";
 
 const HomeView = () => {
 
@@ -15,7 +16,7 @@ const HomeView = () => {
             <h1 >BIENVENIDOS </h1>
             <h2 >A WELTSITE</h2>
             <p>
-             Somos una página para estudiantes de 3ro y 4to del Colegio San Alberto Magno...
+             Somos una página para estudiantes de 3ro y 4to del Colegio San Alberto Magno.
             </p>
           </div>
           <img className={styles.homeLogo} src={homeLogo} alt="Planet" />
@@ -25,10 +26,8 @@ const HomeView = () => {
         </div>
       </section>
 
-      <div id="SliderHome" className={styles.SliderHome}>
-        {/* Tu componente SliderHome aquí */}
-        <SliderHome/>
-      </div>
+     
+      <DepartmentSlider/>
       <ModalButton contentTitle={'Seré su guia en esta página'}/>
 
      

@@ -9,7 +9,6 @@ function BotonAtras() {
   const handleAtrasClick = () => {
     navigate(-1);
   };
-
   return (
     <div className={styles.buttonback}>
 

@@ -1,43 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import './ModalButton.css';
-import oliver from '../../assets/img/oli.png';
-
-// Importa los archivos de sonido
-import sonidoEntrada from '../../assets/img/iphone.mp3';
-import sonidoSalida from '../../assets/img/salida.mp3';
-
+import gato from '../../assets/img/oliver3.webp'
 const ModalButton = ({ contentTitle }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [audioEntrada] = useState(new Audio(sonidoEntrada)); // Sonido al abrir el modal
-  const [audioSalida] = useState(new Audio(sonidoSalida)); // Sonido al cerrar el modal
-
+  
   const closeModal = () => {
-    audioSalida.play(); // Reproduce el sonido al cerrar el modal
     setModalIsOpen(false);
   };
 
   useEffect(() => {
-    // Abre el modal automáticamente al cargar la página
-    audioEntrada.play(); // Reproduce el sonido al abrir el modal
     setModalIsOpen(true);
+    const timeout = setTimeout(() => {
+      closeModal();
+    }, 6000);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
-
   return (
-    <div>
-      {modalIsOpen && (
-        <div className="popup-modal">
-          <div className="popup-modal-content">
-            <button onClick={closeModal} className="close-modal-button">
-              X
-            </button>
-            <img src={oliver} alt="" srcSet="" width={150} />
-            <h2>Hola, soy Oliver</h2>
-            <p>{`${contentTitle}`}</p>
+    <>
+      <div>
+        {modalIsOpen && (
+          <div className="notification">
+            <img src={gato}  width={150}></img>
+            <p>Hola, soy Oliver, {`${contentTitle}`} </p>
+            <span className="notification-progress"></span>
           </div>
-        </div>
-      )}
-    </div>
+         
+        )}
+      </div>
+    </>
   );
 };
-
 export default ModalButton;

@@ -47,7 +47,9 @@ Card.propTypes = {
   user: PropTypes.string,
   borarContent: PropTypes.func,
   tipoContenido: PropTypes.string,
-  idcontenido: prototype.object
+  idcontenido: prototype.object,
+  
+
 };
 
 export default Card;

@@ -90,15 +90,16 @@
   @media (max-width: 1400px) {
     .card {
         flex: 1 1 calc(33.33% - 2rem); /* Adjust card width for 3 cards in a row */
-        max-width: calc(33.33% - 2rem);
-        width:  18rem;
+        
+        width:  88rem;
     }
   }
   
   @media (max-width: 768px) {
     .card {
+      
         flex: 1 1 calc(50% - 2rem); /* Adjust card width for 2 cards in a row */
-        max-width: calc(80% - 2rem);
+        width:  88rem;
     }
   }
   
